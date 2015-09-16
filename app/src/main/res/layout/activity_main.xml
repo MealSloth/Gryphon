@@ -1,31 +1,166 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:background="#0099cc" tools:context=".MainActivity">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/solid_black">
 
-    <!-- The primary full-screen view. This can be replaced with whatever view
-         is needed to present your content, e.g. VideoView, SurfaceView,
-         TextureView, etc. -->
-    <TextView android:id="@+id/fullscreen_content" android:layout_width="match_parent"
-        android:layout_height="match_parent" android:keepScreenOn="true" android:textColor="#33b5e5"
-        android:textStyle="bold" android:textSize="50sp" android:gravity="center"
-        android:text="@string/dummy_content" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <!-- This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows. -->
-    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <LinearLayout android:id="@+id/fullscreen_content_controls" style="?metaButtonBarStyle"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/black_overlay" android:orientation="horizontal"
-            tools:ignore="UselessParent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-            <Button android:id="@+id/dummy_button" style="?metaButtonBarButtonStyle"
-                android:layout_width="0dp" android:layout_height="wrap_content"
-                android:layout_weight="1" android:text="@string/dummy_button" />
+                <ImageView
+                    android:id="@+id/imageViewMeal1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:layout_marginBottom="4dp"
+                    android:src="@drawable/meal1"/>
 
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/imageViewMeal2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:layout_marginBottom="4dp"
+                    android:src="@drawable/meal2"/>
+
+                <ImageView
+                    android:id="@+id/imageViewMeal3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:layout_marginBottom="4dp"
+                    android:src="@drawable/meal3"/>
+
+                <ImageView
+                    android:id="@+id/imageViewMeal4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:layout_marginBottom="4dp"
+                    android:src="@drawable/meal1"/>
+
+                <ImageView
+                    android:id="@+id/imageViewMeal5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:layout_marginBottom="4dp"
+                    android:src="@drawable/meal2"/>
+
+                <ImageView
+                    android:id="@+id/imageViewMeal6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:layout_marginBottom="4dp"
+                    android:src="@drawable/meal3"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/solid_black"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
     </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:background="@color/transparency">
+
+        <ImageButton
+            android:id="@+id/navButtonBecomeAChef"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.97"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerInside"
+            android:background="@color/transparent_darkgrey"
+            android:src="@drawable/nav_button_become_a_chef"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.03"
+            android:layout_marginTop="10dp"
+            android:background="@color/solid_black"/>
+
+        <ImageButton
+            android:id="@+id/navButtonFavorites"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.97"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerInside"
+            android:background="@color/transparent_darkgrey"
+            android:src="@drawable/nav_button_favorites"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.03"
+            android:layout_marginTop="10dp"
+            android:background="@color/solid_black"/>
+
+        <ImageButton
+            android:id="@+id/navButtonHome"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.97"
+            android:scaleType="centerInside"
+            android:background="@color/transparent_darkgrey"
+            android:src="@drawable/nav_button_home"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.03"
+            android:layout_marginTop="10dp"
+            android:background="@color/solid_black"/>
+
+        <ImageButton
+            android:id="@+id/navButtonProfile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.97"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerInside"
+            android:background="@color/transparent_darkgrey"
+            android:src="@drawable/nav_button_profile"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.03"
+            android:layout_marginTop="10dp"
+            android:background="@color/solid_black"/>
+
+        <ImageButton
+            android:id="@+id/navButtonSettings"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.97"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerInside"
+            android:background="@color/transparent_darkgrey"
+            android:src="@drawable/nav_button_settings"/>
+
+    </LinearLayout>
 
 </FrameLayout>
