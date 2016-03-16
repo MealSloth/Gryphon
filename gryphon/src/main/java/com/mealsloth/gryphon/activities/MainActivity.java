@@ -49,7 +49,7 @@ public class MainActivity extends AbstractBaseActivity
 
     protected void handleReceiveResultError(ArrayList results, String methodName)
     {
-        System.out.println("Error occurred");
+        System.out.println("Error occurred on request");
     }
 
     //Test
