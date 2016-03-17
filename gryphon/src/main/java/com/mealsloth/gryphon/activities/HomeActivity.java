@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 public class HomeActivity extends AbstractBaseActivity
 {
-    private PostModel post;
     private ArrayList<PostModel> posts;
 
     private TextView tvDebug;
@@ -40,11 +39,6 @@ public class HomeActivity extends AbstractBaseActivity
     {
         switch (methodName)
         {
-            case PostRequest.METHOD_POST:
-                PostResult postResult = new PostResult(results);
-                this.post = postResult.post;
-                this.tvDebug.setText(this.post.id + "\n" + this.post.name);
-                break;
             case PostRequest.METHOD_POST_PAGE:
                 PostResult postsResult = new PostResult(results);
                 this.posts = postsResult.posts;
