@@ -21,6 +21,17 @@ public class UserLoginRequest extends AbstractAPIRequest
     public final static String METHOD_USER_LOGIN = "UserLogin";
     public final static String METHOD_USER_LOGIN_PASSWORD_CHANGE = "UserLoginPasswordChange";
 
+    public final static String PARAM_CLIENT_USER_LOGIN_ID = "userLoginID";
+    public final static String PARAM_SERVER_USER_LOGIN_ID = "user_login_id";
+    public final static String PARAM_CLIENT_USER_ID = "userID";
+    public final static String PARAM_SERVER_USER_ID = "user_id";
+    public final static String PARAM_USERNAME = "username";
+    public final static String PARAM_PASSWORD = "password";
+    public final static String PARAM_CLIENT_ACCESS_LEVEL = "accessLevel";
+    public final static String PARAM_SERVER_ACCESS_LEVEL = "access_level";
+
+    public final static String PARAM_USER_LOGIN = "user_login";
+
     public UserLoginRequest activity(AbstractBaseActivity activity)
     {
         this.activity = activity;
@@ -32,7 +43,7 @@ public class UserLoginRequest extends AbstractAPIRequest
         String className = UserLoginRequest.class.getCanonicalName();
         final Intent intent = new Intent(Intent.ACTION_SYNC, null, this.activity, APIService.class);
         intent.putExtra(APIService.KEY_RECEIVER, this.activity.receiver);
-        intent.putExtra(APIService.KEY_COMMAND, "api_call");
+        intent.putExtra(APIService.KEY_COMMAND, APIService.COMMAND_API_CALL);
         intent.putExtra(APIService.KEY_CLASS_NAME, className);
         intent.putExtra(APIService.KEY_METHOD_NAME, methodName);
         intent.putExtra(APIService.KEY_PARAMETERS, this.parameters);
@@ -41,16 +52,16 @@ public class UserLoginRequest extends AbstractAPIRequest
 
     public UserLoginRequest methodUserLogin(String userLoginID)
     {
-        this.methodName = "UserLogin";
-        this.parameters.put("userLoginID", userLoginID);
+        this.methodName = METHOD_USER_LOGIN;
+        this.parameters.put(PARAM_CLIENT_USER_LOGIN_ID, userLoginID);
         return this;
     }
 
     public UserLoginRequest methodUserLoginPasswordChange(String userLoginID, String password)
     {
-        this.methodName = "UserLoginPasswordChange";
-        this.parameters.put("userLoginID", userLoginID);
-        this.parameters.put("password", password);
+        this.methodName = METHOD_USER_LOGIN_PASSWORD_CHANGE;
+        this.parameters.put(PARAM_CLIENT_USER_LOGIN_ID, userLoginID);
+        this.parameters.put(PARAM_PASSWORD, password);
         return this;
     }
 
@@ -58,24 +69,24 @@ public class UserLoginRequest extends AbstractAPIRequest
     public UserLoginModel UserLogin(HashMap request)
     {
         HashMap<String, String> data = new HashMap<>();
-        String userLoginID = (String)request.get("userLoginID");
-        String userID = (String)request.get("userID");
+        String userLoginID = (String)request.get(PARAM_CLIENT_USER_LOGIN_ID);
+        String userID = (String)request.get(PARAM_CLIENT_USER_ID);
         if (userLoginID != null && !userLoginID.equals(""))
-            data.put("user_login_id", userLoginID);
+            data.put(PARAM_SERVER_USER_LOGIN_ID, userLoginID);
         else if (userID != null && !userID.equals(""))
-            data.put("user_id", userID);
+            data.put(PARAM_SERVER_USER_ID, userID);
 
         try
         {
             String response = new JsonPost(APIHostEnum.CHIMERA, "user-login/", data).post();
             HashMap result = new ObjectMapper().readValue(response, HashMap.class);
-            result = (HashMap)result.get("user_login");
+            result = (HashMap)result.get(PARAM_USER_LOGIN);
             return new UserLoginModel(
-                    (String)result.get("id"),
-                    (String)result.get("user_id"),
-                    (String)result.get("username"),
-                    (String)result.get("password"),
-                    (int)result.get("access_level")
+                    (String)result.get(PARAM_ID),
+                    (String)result.get(PARAM_SERVER_USER_ID),
+                    (String)result.get(PARAM_USERNAME),
+                    (String)result.get(PARAM_PASSWORD),
+                    (int)result.get(PARAM_SERVER_ACCESS_LEVEL)
             );
         }
         catch (IOException error)
@@ -87,26 +98,26 @@ public class UserLoginRequest extends AbstractAPIRequest
     public UserLoginModel UserLoginPasswordChange(HashMap request)
     {
         HashMap<String, String> data = new HashMap<>();
-        String userLoginID = (String)request.get("userLoginID");
-        String password = (String)request.get("password");
+        String userLoginID = (String)request.get(PARAM_CLIENT_USER_LOGIN_ID);
+        String password = (String)request.get(PARAM_PASSWORD);
 
         if (userLoginID != null && password != null)
         {
-            data.put("user_login_id", userLoginID);
-            data.put("password", password);
+            data.put(PARAM_SERVER_USER_LOGIN_ID, userLoginID);
+            data.put(PARAM_PASSWORD, password);
         }
 
         try
         {
             String response = new JsonPost(APIHostEnum.CHIMERA, "user-login/password/change/", data).post();
             HashMap result = new ObjectMapper().readValue(response, HashMap.class);
-            result = (HashMap)result.get("user_login");
+            result = (HashMap)result.get(PARAM_USER_LOGIN);
             return new UserLoginModel(
-                    (String)result.get("id"),
-                    (String)result.get("user_id"),
-                    (String)result.get("username"),
-                    (String)result.get("password"),
-                    (int)result.get("access_level")
+                    (String)result.get(PARAM_ID),
+                    (String)result.get(PARAM_SERVER_USER_ID),
+                    (String)result.get(PARAM_USERNAME),
+                    (String)result.get(PARAM_PASSWORD),
+                    (int)result.get(PARAM_SERVER_ACCESS_LEVEL)
             );
         }
         catch (IOException error)

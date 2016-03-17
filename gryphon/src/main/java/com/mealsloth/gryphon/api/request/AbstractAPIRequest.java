@@ -9,6 +9,8 @@ import java.util.HashMap;
  */
 public abstract class AbstractAPIRequest
 {
+    public final static String PARAM_ID = "id";
+
     protected AbstractBaseActivity activity;
     protected String methodName;
     protected HashMap<String, String> parameters;
