@@ -35,8 +35,11 @@ public class SignupActivity extends AbstractBaseActivity
 
     protected void handleReceiveResultFinished(ArrayList results, String methodName)
     {
-        UserResult result = new UserResult(results);
-        this.tvError.setText(result.user.id + "\n" + result.user.firstName + "\n" + result.user.lastName);
+        UserResult result = UserResult.UserCreateResult(results);
+        System.out.println("Received result with ULID: " + result.userLogin.id);
+        System.out.println("Received result with UID: " + result.user.id);
+        Intent intent = new Intent(SignupActivity.this, HomeActivity.class);
+        SignupActivity.this.startActivity(intent);
     }
 
     protected void handleReceiveResultError(ArrayList results, String methodName)
@@ -54,10 +57,22 @@ public class SignupActivity extends AbstractBaseActivity
     public void signup(View v)
     {
         this.tvError.setText("");
-        new UserRequest()
-                .activity(this)
-                .methodUser("57a8e6c8-dc7e-461d-9854-8a96bd88e4b7")
-                .request();
+        String email = etEmail.getText().toString();
+        String password = etPassword.getText().toString();
+        String passwordConfirm = etPasswordConfirm.getText().toString();
+        if (email.equals("") || password.equals("") || passwordConfirm.equals(""))
+            tvError.setText(R.string.signup_fields_required);
+        else if (!email.contains("@"))
+            tvError.setText(R.string.email_invalid);
+        else if (!password.equals(passwordConfirm))
+            tvError.setText(R.string.password_not_match);
+        else if (password.length() < 8)
+            tvError.setText(R.string.password_too_short);
+        else
+            new UserRequest()
+                    .activity(this)
+                    .methodUserCreate(email, password)
+                    .request();
     }
 
     //Misc

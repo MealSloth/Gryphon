@@ -1,6 +1,5 @@
-package com.mealsloth.gryphon.api.result;
+package com.mealsloth.gryphon.api;
 
-import com.mealsloth.gryphon.api.APIParameter;
 import com.mealsloth.gryphon.models.UserLoginModel;
 import com.mealsloth.gryphon.models.UserModel;
 
@@ -9,7 +8,7 @@ import java.util.HashMap;
 /**
  * Created by michael on 3/17/16.
  */
-public class APIResultProcessor
+public class APIModelProcessor
 {
     public static UserModel processUserModel(HashMap result)
     {

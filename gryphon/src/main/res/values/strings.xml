@@ -8,4 +8,8 @@
     <string name="login_incorrect_credentials">Incorrect username or password</string>
     <string name="signup_button">Sign Up</string>
     <string name="signup_request">Sign up here!</string>
+    <string name="signup_fields_required">All fields are required</string>
+    <string name="email_invalid">Invalid email</string>
+    <string name="password_not_match">Passwords do not match</string>
+    <string name="password_too_short">Password must be at least 8 characters</string>
 </resources>

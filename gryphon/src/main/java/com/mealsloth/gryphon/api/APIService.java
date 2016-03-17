@@ -47,10 +47,10 @@ public class APIService extends IntentService
             try
             {
                 Class classObject = Class.forName(className);
-                ArrayList<Parcelable> results = new ArrayList<>();
+                ArrayList results = new ArrayList();
                 Method method = classObject.getMethod(methodName, HashMap.class);
-                results.add((Parcelable)method.invoke(classObject.newInstance(), parameter));
-                b.putParcelableArrayList(KEY_RESULTS, results);
+                results.add(method.invoke(classObject.newInstance(), parameter));
+                b.putSerializable(KEY_RESULTS, results);
                 b.putString(KEY_METHOD_NAME, methodName);
                 receiver.send(STATUS_FINISHED, b);
             }

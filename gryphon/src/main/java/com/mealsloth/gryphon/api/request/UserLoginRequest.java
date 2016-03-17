@@ -4,7 +4,7 @@ import com.mealsloth.gryphon.activities.AbstractBaseActivity;
 import com.mealsloth.gryphon.api.APIParameter;
 import com.mealsloth.gryphon.api.JsonPost;
 import com.mealsloth.gryphon.api.APIHost.APIHostEnum;
-import com.mealsloth.gryphon.api.result.APIResultProcessor;
+import com.mealsloth.gryphon.api.APIModelProcessor;
 import com.mealsloth.gryphon.models.UserLoginModel;
 
 import org.codehaus.jackson.map.ObjectMapper;
@@ -62,7 +62,7 @@ public class UserLoginRequest extends AbstractAPIRequest
             String response = new JsonPost(APIHostEnum.CHIMERA, "user-login/", data).post();
             HashMap result = new ObjectMapper().readValue(response, HashMap.class);
             result = (HashMap)result.get(APIParameter.PARAM_USER_LOGIN);
-            return APIResultProcessor.processUserLoginModel(result);
+            return APIModelProcessor.processUserLoginModel(result);
         }
         catch (IOException error)
         {
@@ -87,7 +87,7 @@ public class UserLoginRequest extends AbstractAPIRequest
             String response = new JsonPost(APIHostEnum.CHIMERA, "user-login/password/change/", data).post();
             HashMap result = new ObjectMapper().readValue(response, HashMap.class);
             result = (HashMap)result.get(APIParameter.PARAM_USER_LOGIN);
-            return APIResultProcessor.processUserLoginModel(result);
+            return APIModelProcessor.processUserLoginModel(result);
         }
         catch (IOException error)
         {

@@ -1,10 +1,11 @@
 package com.mealsloth.gryphon.api.request;
 
 import com.mealsloth.gryphon.activities.AbstractBaseActivity;
-import com.mealsloth.gryphon.api.APIHost;
+import com.mealsloth.gryphon.api.APIHost.APIHostEnum;
 import com.mealsloth.gryphon.api.APIParameter;
 import com.mealsloth.gryphon.api.JsonPost;
-import com.mealsloth.gryphon.api.result.APIResultProcessor;
+import com.mealsloth.gryphon.api.APIModelProcessor;
+import com.mealsloth.gryphon.models.UserLoginModel;
 import com.mealsloth.gryphon.models.UserModel;
 
 import org.codehaus.jackson.map.ObjectMapper;
@@ -54,10 +55,10 @@ public class UserRequest extends AbstractAPIRequest
         data.put(APIParameter.PARAM_SERVER_USER_ID, userID);
         try
         {
-            String response = new JsonPost(APIHost.APIHostEnum.CHIMERA, "user/", data).post();
+            String response = new JsonPost(APIHostEnum.CHIMERA, "user/", data).post();
             HashMap result = new ObjectMapper().readValue(response, HashMap.class);
             result = (HashMap)result.get(APIParameter.PARAM_USER);
-            return APIResultProcessor.processUserModel(result);
+            return APIModelProcessor.processUserModel(result);
         }
         catch (IOException error)
         {
@@ -67,6 +68,30 @@ public class UserRequest extends AbstractAPIRequest
 
     public HashMap UserCreate(HashMap request)
     {
-        return new HashMap();
+        HashMap<String, String> data = new HashMap<>();
+        String email = (String)request.get(APIParameter.PARAM_EMAIL);
+        String password = (String)request.get(APIParameter.PARAM_PASSWORD);
+        data.put(APIParameter.PARAM_EMAIL, email);
+        data.put(APIParameter.PARAM_PASSWORD, password);
+        try
+        {
+            String response = new JsonPost(APIHostEnum.CHIMERA, "user/create/", data).post();
+            System.out.println(response);
+            HashMap result = new ObjectMapper().readValue(response, HashMap.class);
+            UserModel user = APIModelProcessor.processUserModel(
+                    (HashMap) result.get(APIParameter.PARAM_USER)
+            );
+            UserLoginModel userLogin = APIModelProcessor.processUserLoginModel(
+                    (HashMap) result.get(APIParameter.PARAM_USER_LOGIN)
+            );
+            HashMap results = new HashMap();
+            results.put("user", user);
+            results.put("userLogin", userLogin);
+            return results;
+        }
+        catch (IOException error)
+        {
+            return null;
+        }
     }
 }
