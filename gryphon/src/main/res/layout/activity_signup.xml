@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.mealsloth.gryphon.activities.LoginActivity">
+    tools:context="com.mealsloth.gryphon.activities.SignupActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -14,60 +14,59 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/login_request"
             android:layout_gravity="center_horizontal"
+            android:text="@string/signup_request"
             android:textSize="30sp"/>
 
         <EditText
-            android:id="@+id/et_login_email"
+            android:id="@+id/et_signup_email"
             android:layout_width="250dp"
             android:layout_height="50dp"
-            android:textSize="20sp"
-            android:textColor="@color/black"
+            android:singleLine="true"
             android:hint="@string/hint_email"
-            android:layout_gravity="center_horizontal"
             android:inputType="textEmailAddress"
-            android:singleLine="true"/>
+            android:layout_gravity="center_horizontal"/>
 
         <EditText
-            android:id="@+id/et_login_password"
+            android:id="@+id/et_signup_password"
             android:layout_width="250dp"
             android:layout_height="50dp"
-            android:textSize="20sp"
-            android:textColor="@color/black"
+            android:singleLine="true"
             android:hint="@string/hint_password"
-            android:layout_gravity="center_horizontal"
             android:inputType="textPassword"
-            android:singleLine="true"/>
+            android:layout_gravity="center_horizontal"/>
+
+        <EditText
+            android:id="@+id/et_signup_password_confirm"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:singleLine="true"
+            android:hint="@string/hint_password_confirm"
+            android:inputType="textPassword"
+            android:layout_gravity="center_horizontal"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@string/login_button"
-            android:paddingStart="30dp"
-            android:paddingEnd="30dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:onClick="login"/>
+            android:text="@string/signup_button"
+            android:onClick="signup"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/link_blue"
-            android:text="@string/signup_button"
+            android:text="@string/login_button"
             android:padding="10dp"
             android:clickable="true"
-            android:onClick="toSignup"/>
+            android:onClick="backToLogin"/>
 
         <TextView
-            android:id="@+id/tv_login_error"
+            android:id="@+id/tv_signup_error"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:textSize="20sp"
-            android:textColor="@color/colorPrimaryDark"/>
+            android:layout_gravity="center_horizontal"/>
 
     </LinearLayout>
 

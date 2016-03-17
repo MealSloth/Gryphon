@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <service android:name=".api.APIService"></service>
+        <service android:name=".api.APIService" />
 
         <activity android:name=".activities.LoginActivity">
             <intent-filter>
@@ -19,8 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.MainActivity"></activity>
-        <activity android:name=".activities.HomeActivity"></activity>
+        <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.HomeActivity" />
+        <activity android:name=".activities.SignupActivity"></activity>
     </application>
 
 </manifest>

@@ -68,6 +68,12 @@ public class LoginActivity extends AbstractBaseActivity
                 .request();
     }
 
+    public void toSignup(View v)
+    {
+        Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+        LoginActivity.this.startActivity(intent);
+    }
+
     //Misc
     public void init()
     {
