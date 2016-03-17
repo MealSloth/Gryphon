@@ -76,7 +76,6 @@ public class UserRequest extends AbstractAPIRequest
         try
         {
             String response = new JsonPost(APIHostEnum.CHIMERA, "user/create/", data).post();
-            System.out.println(response);
             HashMap result = new ObjectMapper().readValue(response, HashMap.class);
             UserModel user = APIModelProcessor.processUserModel(
                     (HashMap) result.get(APIParameter.PARAM_USER)

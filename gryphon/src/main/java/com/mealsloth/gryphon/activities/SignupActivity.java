@@ -36,8 +36,6 @@ public class SignupActivity extends AbstractBaseActivity
     protected void handleReceiveResultFinished(ArrayList results, String methodName)
     {
         UserResult result = UserResult.UserCreateResult(results);
-        System.out.println("Received result with ULID: " + result.userLogin.id);
-        System.out.println("Received result with UID: " + result.user.id);
         Intent intent = new Intent(SignupActivity.this, HomeActivity.class);
         SignupActivity.this.startActivity(intent);
     }

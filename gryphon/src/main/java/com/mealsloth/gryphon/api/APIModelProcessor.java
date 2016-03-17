@@ -1,5 +1,6 @@
 package com.mealsloth.gryphon.api;
 
+import com.mealsloth.gryphon.models.PostModel;
 import com.mealsloth.gryphon.models.UserLoginModel;
 import com.mealsloth.gryphon.models.UserModel;
 
@@ -38,6 +39,23 @@ public class APIModelProcessor
                 (String) result.get(APIParameter.PARAM_USERNAME),
                 (String) result.get(APIParameter.PARAM_PASSWORD),
                 (int) result.get(APIParameter.PARAM_SERVER_ACCESS_LEVEL)
+        );
+    }
+
+    public static PostModel processPostModel(HashMap result)
+    {
+        return new PostModel(
+                (String)result.get(APIParameter.PARAM_ID),
+                (String)result.get(APIParameter.PARAM_SERVER_CHEF_ID),
+                (String)result.get(APIParameter.PARAM_SERVER_LOCATION_ID),
+                (String)result.get(APIParameter.PARAM_SERVER_ALBUM_ID),
+                (String)result.get(APIParameter.PARAM_NAME),
+                (String)result.get(APIParameter.PARAM_DESCRIPTION),
+                (int)result.get(APIParameter.PARAM_SERVER_ORDER_COUNT),
+                (int)result.get(APIParameter.PARAM_CAPACITY),
+                (int)result.get(APIParameter.PARAM_SERVER_POST_STATUS),
+                (String)result.get(APIParameter.PARAM_SERVER_POST_TIME),
+                (String)result.get(APIParameter.PARAM_SERVER_EXPIRE_TIME)
         );
     }
 }

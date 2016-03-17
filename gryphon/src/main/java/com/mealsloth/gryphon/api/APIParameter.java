@@ -23,6 +23,10 @@ public class APIParameter
     public final static String PARAM_SERVER_BILLING_ID = "billing_id";
     public final static String PARAM_CLIENT_PROFILE_PHOTO_ID = "profilePhotoID";
     public final static String PARAM_SERVER_PROFILE_PHOTO_ID = "profile_photo_id";
+    public final static String PARAM_CLIENT_ALBUM_ID = "albumID";
+    public final static String PARAM_SERVER_ALBUM_ID = "album_id";
+    public final static String PARAM_CLIENT_POST_ID = "postID";
+    public final static String PARAM_SERVER_POST_ID = "post_id";
 
     //Variants
     public final static String PARAM_CLIENT_ACCESS_LEVEL = "accessLevel";
@@ -37,14 +41,31 @@ public class APIParameter
     public final static String PARAM_SERVER_DATE_OF_BIRTH = "date_of_birth";
     public final static String PARAM_CLIENT_JOIN_DATE = "joinDate";
     public final static String PARAM_SERVER_JOIN_DATE = "join_date";
+    public final static String PARAM_CLIENT_ORDER_COUNT = "orderCount";
+    public final static String PARAM_SERVER_ORDER_COUNT = "order_count";
+    public final static String PARAM_CLIENT_POST_STATUS = "postStatus";
+    public final static String PARAM_SERVER_POST_STATUS = "post_status";
+    public final static String PARAM_CLIENT_POST_TIME = "postTime";
+    public final static String PARAM_SERVER_POST_TIME = "post_time";
+    public final static String PARAM_CLIENT_EXPIRE_TIME = "expireTime";
+    public final static String PARAM_SERVER_EXPIRE_TIME = "expire_time";
+    public final static String PARAM_CLIENT_PAGE_SIZE = "pageSize";
+    public final static String PARAM_SERVER_PAGE_SIZE = "page_size";
+    public final static String PARAM_CLIENT_POST_TIME_STAMP = "postTimeStamp";
+    public final static String PARAM_SERVER_POST_TIME_STAMP = "post_time_stamp";
 
     //Shared
     public final static String PARAM_USERNAME = "username";
     public final static String PARAM_PASSWORD = "password";
     public final static String PARAM_EMAIL = "email";
     public final static String PARAM_GENDER = "gender";
+    public final static String PARAM_NAME = "name";
+    public final static String PARAM_DESCRIPTION = "description";
+    public final static String PARAM_CAPACITY = "capacity";
 
     /** Return params **/
     public final static String PARAM_USER_LOGIN = "user_login";
     public final static String PARAM_USER = "user";
+    public final static String PARAM_POST = "post";
+    public final static String PARAM_POSTS = "posts";
 }

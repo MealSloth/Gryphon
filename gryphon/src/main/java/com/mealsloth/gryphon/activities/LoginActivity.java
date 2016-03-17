@@ -29,6 +29,8 @@ public class LoginActivity extends AbstractBaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         this.init();
+        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+        LoginActivity.this.startActivity(intent);
     }
 
     //Results
@@ -64,7 +66,7 @@ public class LoginActivity extends AbstractBaseActivity
                 InputMethodManager.HIDE_NOT_ALWAYS);
         new UserLoginRequest()
                 .activity(this)
-                .methodUserLogin("ba5c2b50-3442-4a25-9c3e-2d2c42d5c4ac")
+                .methodUserLogin("63dd798f-50d6-40b2-8827-9788a6591dec")
                 .request();
     }
 
