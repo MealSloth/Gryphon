@@ -40,6 +40,13 @@ public class UserRequest extends AbstractAPIRequest
         return this;
     }
 
+    public UserRequest methodUser(String email, boolean optional)
+    {
+        this.methodName = METHOD_USER;
+        this.parameters.put(APIParameter.PARAM_EMAIL, email);
+        return this;
+    }
+
     public UserRequest methodUserCreate(String email, String password)
     {
         this.methodName = METHOD_USER_CREATE;
@@ -51,8 +58,21 @@ public class UserRequest extends AbstractAPIRequest
     public UserModel User(HashMap request)
     {
         HashMap<String, String> data = new HashMap<>();
-        String userID = (String)request.get(APIParameter.PARAM_CLIENT_USER_ID);
-        data.put(APIParameter.PARAM_SERVER_USER_ID, userID);
+        if (request.get(APIParameter.PARAM_CLIENT_USER_ID) != null)
+        {
+            String userID = (String)request.get(APIParameter.PARAM_CLIENT_USER_ID);
+            data.put(APIParameter.PARAM_SERVER_USER_ID, userID);
+        }
+        else if (request.get(APIParameter.PARAM_EMAIL) != null)
+        {
+            String email = (String)request.get(APIParameter.PARAM_EMAIL);
+            System.out.println(email);
+            data.put(APIParameter.PARAM_EMAIL, email);
+        }
+        else
+        {
+            return null;
+        }
         try
         {
             String response = new JsonPost(APIHostEnum.CHIMERA, "user/", data).post();

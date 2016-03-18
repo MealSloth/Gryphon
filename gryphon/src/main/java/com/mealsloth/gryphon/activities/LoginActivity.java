@@ -10,8 +10,11 @@ import android.widget.TextView;
 
 import com.mealsloth.gryphon.R;
 import com.mealsloth.gryphon.api.request.UserLoginRequest;
+import com.mealsloth.gryphon.api.request.UserRequest;
 import com.mealsloth.gryphon.api.result.UserLoginResult;
+import com.mealsloth.gryphon.api.result.UserResult;
 import com.mealsloth.gryphon.models.UserLoginModel;
+import com.mealsloth.gryphon.models.UserModel;
 
 import java.util.ArrayList;
 
@@ -21,6 +24,7 @@ public class LoginActivity extends AbstractBaseActivity
     private EditText etPassword;
     private TextView tvError;
 
+    private UserModel user;
     private UserLoginModel userLogin;
 
     @Override
@@ -29,8 +33,6 @@ public class LoginActivity extends AbstractBaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         this.init();
-        Intent intent = new Intent(LoginActivity.this, UserProfileActivity.class);
-        LoginActivity.this.startActivity(intent);
     }
 
     //Results
@@ -43,9 +45,22 @@ public class LoginActivity extends AbstractBaseActivity
     {
         switch (methodName)
         {
+            case UserRequest.METHOD_USER:
+                UserResult userResult = new UserResult(results);
+                if (userResult.user == null)
+                {
+                    this.tvError.setText(getString(R.string.email_invalid));
+                    return;
+                }
+                this.user = userResult.user;
+                new UserLoginRequest()
+                        .activity(this)
+                        .methodUserLogin(this.user.userLoginID)
+                        .request();
+                break;
             case UserLoginRequest.METHOD_USER_LOGIN:
-                UserLoginResult result = new UserLoginResult(results);
-                this.userLogin = result.userLogin;
+                UserLoginResult userLoginResult = new UserLoginResult(results);
+                this.userLogin = userLoginResult.userLogin;
                 authenticate();
                 break;
         }
@@ -64,9 +79,9 @@ public class LoginActivity extends AbstractBaseActivity
                 getSystemService(Context.INPUT_METHOD_SERVICE);
         inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
                 InputMethodManager.HIDE_NOT_ALWAYS);
-        new UserLoginRequest()
+        new UserRequest()
                 .activity(this)
-                .methodUserLogin("63dd798f-50d6-40b2-8827-9788a6591dec")
+                .methodUser(this.etEmail.getText().toString(), true)
                 .request();
     }
 
