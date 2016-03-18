@@ -6,7 +6,7 @@ import android.os.Parcelable;
 /**
  * Created by michael on 3/13/16.
  */
-public class PostModel
+public class PostModel implements Parcelable
 {
     public String id;
     public String chefID;

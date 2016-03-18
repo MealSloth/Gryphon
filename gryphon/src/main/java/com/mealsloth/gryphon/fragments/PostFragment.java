@@ -7,8 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.mealsloth.gryphon.R;
+import com.mealsloth.gryphon.models.PostModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,11 +22,14 @@ import com.mealsloth.gryphon.R;
  */
 public class PostFragment extends Fragment
 {
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_POST = "post";
 
-    private String mParam1;
-    private String mParam2;
+    private View fragmentView;
+
+    private TextView tvPostName;
+    private TextView tvPostTime;
+
+    private PostModel post;
 
     private OnFragmentInteractionListener mListener;
 
@@ -33,12 +38,11 @@ public class PostFragment extends Fragment
         // Required empty public constructor
     }
 
-    public static PostFragment newInstance(String param1, String param2)
+    public static PostFragment newInstance(PostModel post)
     {
         PostFragment fragment = new PostFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putParcelable(ARG_POST, post);
         fragment.setArguments(args);
         return fragment;
     }
@@ -47,27 +51,23 @@ public class PostFragment extends Fragment
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null)
-        {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        if (this.getArguments() != null)
+            this.post = this.getArguments().getParcelable(ARG_POST);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.fragment_post, container, false);
+        this.fragmentView = inflater.inflate(R.layout.fragment_post, container, false);
+        init();
+        return this.fragmentView;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri)
+    public void onPostClick(Uri uri)
     {
         if (mListener != null)
-        {
             mListener.onFragmentInteraction(uri);
-        }
     }
 
     @Override
@@ -75,14 +75,10 @@ public class PostFragment extends Fragment
     {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener)
-        {
             mListener = (OnFragmentInteractionListener) context;
-        }
         else
-        {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
-        }
     }
 
     @Override
@@ -104,7 +100,16 @@ public class PostFragment extends Fragment
      */
     public interface OnFragmentInteractionListener
     {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    //Misc
+    private void init()
+    {
+        this.tvPostName = (TextView)this.fragmentView.findViewById(R.id.tv_fragment_post_name);
+        this.tvPostTime = (TextView)this.fragmentView.findViewById(R.id.tv_fragment_post_time);
+
+        this.tvPostName.setText(this.post.name);
+        this.tvPostTime.setText(this.post.postTime);
     }
 }

@@ -1,28 +1,26 @@
 package com.mealsloth.gryphon.activities;
 
+import android.net.Uri;
+import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
-import android.widget.TextView;
 
 import com.mealsloth.gryphon.R;
 import com.mealsloth.gryphon.api.request.PostRequest;
 import com.mealsloth.gryphon.api.result.PostResult;
+import com.mealsloth.gryphon.fragments.PostFragment;
 import com.mealsloth.gryphon.models.PostModel;
 
 import java.util.ArrayList;
 
-public class HomeActivity extends AbstractBaseActivity
+public class HomeActivity extends AbstractBaseFragmentActivity
 {
     private ArrayList<PostModel> posts;
-
-    private TextView tvDebug;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        this.init();
-
         new PostRequest()
                 .activity(this)
                 .methodPostPage(-1, null)
@@ -42,10 +40,12 @@ public class HomeActivity extends AbstractBaseActivity
             case PostRequest.METHOD_POST_PAGE:
                 PostResult postsResult = new PostResult(results);
                 this.posts = postsResult.posts;
-                String debug = "";
                 for (int i = 0; i < this.posts.size(); i++)
-                    debug += this.posts.get(i).id + "\n" + this.posts.get(i).name + "\n";
-                this.tvDebug.setText(debug);
+                {
+                    PostFragment postFragment = PostFragment.newInstance(this.posts.get(i));
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.add(R.id.ll_activity_home_container, postFragment).commit();
+                }
         }
     }
 
@@ -54,9 +54,8 @@ public class HomeActivity extends AbstractBaseActivity
         System.out.println("Received result error during post get");
     }
 
-    //Misc
-    private void init()
+    public void onFragmentInteraction(Uri uri)
     {
-        this.tvDebug = (TextView)findViewById(R.id.tv_home_debug);
+        System.out.println("Interaction");
     }
 }

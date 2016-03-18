@@ -1,6 +1,7 @@
 package com.mealsloth.gryphon.api.request;
 
 import com.mealsloth.gryphon.activities.AbstractBaseActivity;
+import com.mealsloth.gryphon.activities.AbstractBaseFragmentActivity;
 import com.mealsloth.gryphon.api.APIHost.APIHostEnum;
 import com.mealsloth.gryphon.api.APIModelProcessor;
 import com.mealsloth.gryphon.api.APIParameter;
