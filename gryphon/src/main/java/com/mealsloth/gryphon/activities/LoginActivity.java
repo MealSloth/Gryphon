@@ -29,7 +29,7 @@ public class LoginActivity extends AbstractBaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         this.init();
-        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+        Intent intent = new Intent(LoginActivity.this, UserProfileActivity.class);
         LoginActivity.this.startActivity(intent);
     }
 

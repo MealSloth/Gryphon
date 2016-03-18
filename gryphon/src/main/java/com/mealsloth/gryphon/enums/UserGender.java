@@ -29,6 +29,14 @@ public class UserGender
         userGenderEnum.put(UserGenderEnum.OTHER, "Other");
     }
 
+    public static String stringForInt(int index)
+    {
+        if (index < UserGenderEnum.values().length)
+            return userGenderEnum.get(UserGender.forInt(index));
+        else
+            return null;
+    }
+
     public static UserGenderEnum forInt(int index)
     {
         if (index < UserGenderEnum.values().length)
