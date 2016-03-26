@@ -62,7 +62,7 @@ public class UserLoginRequest extends AbstractAPIRequest
             String response = new JsonPost(APIHostEnum.CHIMERA, "user-login/", data).post();
             HashMap result = new ObjectMapper().readValue(response, HashMap.class);
             result = (HashMap)result.get(APIParameter.PARAM_USER_LOGIN);
-            return APIModelProcessor.processUserLoginModel(result);
+            return APIModelProcessor.ProcessUserLoginModel(result);
         }
         catch (IOException error)
         {
@@ -87,7 +87,7 @@ public class UserLoginRequest extends AbstractAPIRequest
             String response = new JsonPost(APIHostEnum.CHIMERA, "user-login/password/change/", data).post();
             HashMap result = new ObjectMapper().readValue(response, HashMap.class);
             result = (HashMap)result.get(APIParameter.PARAM_USER_LOGIN);
-            return APIModelProcessor.processUserLoginModel(result);
+            return APIModelProcessor.ProcessUserLoginModel(result);
         }
         catch (IOException error)
         {

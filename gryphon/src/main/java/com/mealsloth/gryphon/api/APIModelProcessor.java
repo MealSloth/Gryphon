@@ -1,5 +1,9 @@
 package com.mealsloth.gryphon.api;
 
+import com.mealsloth.gryphon.models.AlbumModel;
+import com.mealsloth.gryphon.models.BlobModel;
+import com.mealsloth.gryphon.models.ChefModel;
+import com.mealsloth.gryphon.models.ConsumerModel;
 import com.mealsloth.gryphon.models.PostModel;
 import com.mealsloth.gryphon.models.UserLoginModel;
 import com.mealsloth.gryphon.models.UserModel;
@@ -11,7 +15,7 @@ import java.util.HashMap;
  */
 public class APIModelProcessor
 {
-    public static UserModel processUserModel(HashMap result)
+    public static UserModel ProcessUserModel(HashMap result)
     {
         return new UserModel(
                 (String)result.get(APIParameter.PARAM_ID),
@@ -31,7 +35,7 @@ public class APIModelProcessor
         );
     }
 
-    public static UserLoginModel processUserLoginModel(HashMap result)
+    public static UserLoginModel ProcessUserLoginModel(HashMap result)
     {
         return new UserLoginModel(
                 (String) result.get(APIParameter.PARAM_ID),
@@ -42,7 +46,7 @@ public class APIModelProcessor
         );
     }
 
-    public static PostModel processPostModel(HashMap result)
+    public static PostModel ProcessPostModel(HashMap result)
     {
         return new PostModel(
                 (String)result.get(APIParameter.PARAM_ID),
@@ -56,6 +60,34 @@ public class APIModelProcessor
                 (int)result.get(APIParameter.PARAM_SERVER_POST_STATUS),
                 (String)result.get(APIParameter.PARAM_SERVER_POST_TIME),
                 (String)result.get(APIParameter.PARAM_SERVER_EXPIRE_TIME)
+        );
+    }
+
+    public static AlbumModel ProcessAlbumModel(HashMap result)
+    {
+        return new AlbumModel(
+                (String)result.get(APIParameter.PARAM_ID),
+                (String)result.get(APIParameter.PARAM_TIME)
+        );
+    }
+
+    public static ChefModel ProcessChefModel(HashMap result)
+    {
+        return new ChefModel(
+                (String)result.get(APIParameter.PARAM_ID),
+                (String)result.get(APIParameter.PARAM_SERVER_USER_ID),
+                (String)result.get(APIParameter.PARAM_SERVER_LOCATION_ID)
+        );
+    }
+
+    public static BlobModel ProcessBlobModel(HashMap result)
+    {
+        return new BlobModel(
+                (String)result.get(APIParameter.PARAM_ID),
+                (String)result.get(APIParameter.PARAM_SERVER_ALBUM_ID),
+                (String)result.get(APIParameter.PARAM_SERVER_GCS_ID),
+                (String)result.get(APIParameter.PARAM_SERVER_CONTENT_TYPE),
+                (String)result.get(APIParameter.PARAM_TIME)
         );
     }
 }

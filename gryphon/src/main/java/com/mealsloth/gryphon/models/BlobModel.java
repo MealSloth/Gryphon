@@ -6,9 +6,8 @@ import android.os.Parcelable;
 /**
  * Created by michael on 3/13/16.
  */
-public class BlobModel implements Parcelable
+public class BlobModel extends AbstractAPIModel
 {
-    String id;
     String albumID;
     String gcsID;
     String contentType;
@@ -16,7 +15,7 @@ public class BlobModel implements Parcelable
 
     public BlobModel(String id, String albumID, String gcsID, String contentType, String time)
     {
-        this.id = id;
+        super(id);
         this.albumID = albumID;
         this.gcsID = gcsID;
         this.contentType = contentType;
@@ -25,7 +24,7 @@ public class BlobModel implements Parcelable
 
     private BlobModel(Parcel in)
     {
-        this.id = in.readString();
+        super(in);
         this.albumID = in.readString();
         this.gcsID = in.readString();
         this.contentType = in.readString();
@@ -35,13 +34,13 @@ public class BlobModel implements Parcelable
     @Override
     public int describeContents()
     {
-        return 0;
+        return super.describeContents();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags)
     {
-        dest.writeString(this.id);
+        super.writeToParcel(dest, flags);
         dest.writeString(this.time);
     }
 

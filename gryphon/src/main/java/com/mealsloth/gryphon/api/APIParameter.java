@@ -27,6 +27,10 @@ public class APIParameter
     public final static String PARAM_SERVER_ALBUM_ID = "album_id";
     public final static String PARAM_CLIENT_POST_ID = "postID";
     public final static String PARAM_SERVER_POST_ID = "post_id";
+    public final static String PARAM_CLIENT_GCS_ID = "gcsID";
+    public final static String PARAM_SERVER_GCS_ID = "gcs_id";
+    public final static String PARAM_CLIENT_BLOB_ID = "blobID";
+    public final static String PARAM_SERVER_BLOB_ID = "blob_id";
 
     //Variants
     public final static String PARAM_CLIENT_ACCESS_LEVEL = "accessLevel";
@@ -53,6 +57,8 @@ public class APIParameter
     public final static String PARAM_SERVER_PAGE_SIZE = "page_size";
     public final static String PARAM_CLIENT_POST_TIME_STAMP = "postTimeStamp";
     public final static String PARAM_SERVER_POST_TIME_STAMP = "post_time_stamp";
+    public final static String PARAM_CLIENT_CONTENT_TYPE = "contentType";
+    public final static String PARAM_SERVER_CONTENT_TYPE = "content_type";
 
     //Shared
     public final static String PARAM_USERNAME = "username";
@@ -62,10 +68,14 @@ public class APIParameter
     public final static String PARAM_NAME = "name";
     public final static String PARAM_DESCRIPTION = "description";
     public final static String PARAM_CAPACITY = "capacity";
+    public final static String PARAM_TIME = "time";
 
     /** Return params **/
     public final static String PARAM_USER_LOGIN = "user_login";
     public final static String PARAM_USER = "user";
     public final static String PARAM_POST = "post";
     public final static String PARAM_POSTS = "posts";
+    public final static String PARAM_ALBUM = "album";
+    public final static String PARAM_CHEF = "chef";
+    public final static String PARAM_BLOB = "blob";
 }

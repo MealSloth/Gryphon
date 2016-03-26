@@ -78,7 +78,7 @@ public class UserRequest extends AbstractAPIRequest
             String response = new JsonPost(APIHostEnum.CHIMERA, "user/", data).post();
             HashMap result = new ObjectMapper().readValue(response, HashMap.class);
             result = (HashMap)result.get(APIParameter.PARAM_USER);
-            return APIModelProcessor.processUserModel(result);
+            return APIModelProcessor.ProcessUserModel(result);
         }
         catch (IOException error)
         {
@@ -97,10 +97,10 @@ public class UserRequest extends AbstractAPIRequest
         {
             String response = new JsonPost(APIHostEnum.CHIMERA, "user/create/", data).post();
             HashMap result = new ObjectMapper().readValue(response, HashMap.class);
-            UserModel user = APIModelProcessor.processUserModel(
+            UserModel user = APIModelProcessor.ProcessUserModel(
                     (HashMap) result.get(APIParameter.PARAM_USER)
             );
-            UserLoginModel userLogin = APIModelProcessor.processUserLoginModel(
+            UserLoginModel userLogin = APIModelProcessor.ProcessUserLoginModel(
                     (HashMap) result.get(APIParameter.PARAM_USER_LOGIN)
             );
             HashMap results = new HashMap();

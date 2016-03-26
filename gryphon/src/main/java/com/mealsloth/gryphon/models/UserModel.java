@@ -6,9 +6,8 @@ import android.os.Parcelable;
 /**
  * Created by michael on 3/13/16.
  */
-public class UserModel implements Parcelable
+public class UserModel extends AbstractAPIModel
 {
-    public String id;
     public String userLoginID;
     public String consumerID;
     public String chefID;
@@ -28,7 +27,7 @@ public class UserModel implements Parcelable
                      String firstName, String lastName, String phoneNumber, String dateOfBirth,
                      int gender, String joinDate)
     {
-        this.id = id;
+        super(id);
         this.userLoginID = userLoginID;
         this.consumerID = consumerID;
         this.chefID = chefID;
@@ -46,7 +45,7 @@ public class UserModel implements Parcelable
 
     public UserModel(Parcel in)
     {
-        this.id = in.readString();
+        super(in);
         this.userLoginID = in.readString();
         this.consumerID = in.readString();
         this.chefID = in.readString();
@@ -69,12 +68,12 @@ public class UserModel implements Parcelable
 
     public int describeContents()
     {
-        return 0;
+        return super.describeContents();
     }
 
     public void writeToParcel(Parcel dest, int flags)
     {
-        dest.writeString(this.id);
+        super.writeToParcel(dest, flags);
         dest.writeString(this.userLoginID);
         dest.writeString(this.consumerID);
         dest.writeString(this.chefID);

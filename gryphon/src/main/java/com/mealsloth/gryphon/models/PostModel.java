@@ -6,9 +6,8 @@ import android.os.Parcelable;
 /**
  * Created by michael on 3/13/16.
  */
-public class PostModel implements Parcelable
+public class PostModel extends AbstractAPIModel
 {
-    public String id;
     public String chefID;
     public String locationID;
     public String albumID;
@@ -24,7 +23,7 @@ public class PostModel implements Parcelable
                      String description, int orderCount, int capacity, int postStatus,
                      String postTime, String expireTime)
     {
-        this.id = id;
+        super(id);
         this.chefID = chefID;
         this.locationID = locationID;
         this.albumID = albumID;
@@ -39,7 +38,7 @@ public class PostModel implements Parcelable
 
     public PostModel(Parcel in)
     {
-        this.id = in.readString();
+        super(in);
         this.chefID = in.readString();
         this.locationID = in.readString();
         this.albumID = in.readString();
@@ -54,12 +53,12 @@ public class PostModel implements Parcelable
 
     public int describeContents()
     {
-        return 0;
+        return super.describeContents();
     }
 
     public void writeToParcel(Parcel dest, int flags)
     {
-        dest.writeString(this.id);
+        super.writeToParcel(dest, flags);
         dest.writeString(this.chefID);
         dest.writeString(this.locationID);
         dest.writeString(this.albumID);

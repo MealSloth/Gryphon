@@ -6,9 +6,8 @@ import android.os.Parcelable;
 /**
  * Created by michael on 3/13/16.
  */
-public class UserLoginModel implements Parcelable
+public class UserLoginModel extends AbstractAPIModel
 {
-    public String id;
     public String userID;
     public String username;
     private String password;
@@ -16,8 +15,7 @@ public class UserLoginModel implements Parcelable
 
     public UserLoginModel(String id, String userID, String username, String password, int accessLevel)
     {
-        super();
-        this.id = id;
+        super(id);
         this.userID = userID;
         this.username = username;
         this.password = password;
@@ -26,7 +24,7 @@ public class UserLoginModel implements Parcelable
 
     public UserLoginModel(Parcel in)
     {
-        this.id = in.readString();
+        super(in);
         this.userID = in.readString();
         this.username = in.readString();
         this.password = in.readString();
@@ -45,12 +43,12 @@ public class UserLoginModel implements Parcelable
 
     public int describeContents()
     {
-        return 0;
+        return super.describeContents();
     }
 
     public void writeToParcel(Parcel dest, int flags)
     {
-        dest.writeString(this.id);
+        super.writeToParcel(dest, flags);
         dest.writeString(this.userID);
         dest.writeString(this.username);
         dest.writeString(this.getPassword());

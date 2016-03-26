@@ -1,6 +1,5 @@
 package com.mealsloth.gryphon.activities;
 
-import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;

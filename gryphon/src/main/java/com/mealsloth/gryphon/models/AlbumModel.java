@@ -6,33 +6,32 @@ import android.os.Parcelable;
 /**
  * Created by michael on 3/13/16.
  */
-public class AlbumModel implements Parcelable
+public class AlbumModel extends AbstractAPIModel
 {
-    String id;
     String time;
 
     public AlbumModel(String id, String time)
     {
-        this.id = id;
+        super(id);
         this.time = time;
     }
 
     private AlbumModel(Parcel in)
     {
-        this.id = in.readString();
+        super(in);
         this.time = in.readString();
     }
 
     @Override
     public int describeContents()
     {
-        return 0;
+        return super.describeContents();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags)
     {
-        dest.writeString(this.id);
+        super.writeToParcel(dest, flags);
         dest.writeString(this.time);
     }
 

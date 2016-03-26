@@ -1,7 +1,6 @@
 package com.mealsloth.gryphon.api.request;
 
 import com.mealsloth.gryphon.activities.AbstractBaseActivity;
-import com.mealsloth.gryphon.activities.AbstractBaseFragmentActivity;
 import com.mealsloth.gryphon.api.APIHost.APIHostEnum;
 import com.mealsloth.gryphon.api.APIModelProcessor;
 import com.mealsloth.gryphon.api.APIParameter;
@@ -57,7 +56,7 @@ public class PostRequest extends AbstractAPIRequest
             String response = new JsonPost(APIHostEnum.CHIMERA, "post/", data).post();
             HashMap result = new ObjectMapper().readValue(response, HashMap.class);
             result = (HashMap)result.get(APIParameter.PARAM_POST);
-            return APIModelProcessor.processPostModel(result);
+            return APIModelProcessor.ProcessPostModel(result);
         }
         catch (IOException error)
         {
@@ -85,7 +84,7 @@ public class PostRequest extends AbstractAPIRequest
             ArrayList<HashMap> posts = (ArrayList<HashMap>)results.get(APIParameter.PARAM_POSTS);
             ArrayList<PostModel> processedPosts = new ArrayList<>();
             for (int i = 0; i < posts.size(); i++)
-                processedPosts.add(APIModelProcessor.processPostModel(posts.get(i)));
+                processedPosts.add(APIModelProcessor.ProcessPostModel(posts.get(i)));
             return processedPosts;
         }
         catch (IOException error)
