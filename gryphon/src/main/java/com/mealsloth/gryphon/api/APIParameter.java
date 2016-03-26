@@ -31,6 +31,12 @@ public class APIParameter
     public final static String PARAM_SERVER_GCS_ID = "gcs_id";
     public final static String PARAM_CLIENT_BLOB_ID = "blobID";
     public final static String PARAM_SERVER_BLOB_ID = "blob_id";
+    public final static String PARAM_CLIENT_ORDER_TIME_ID = "orderTimeID";
+    public final static String PARAM_SERVER_ORDER_TIME_ID = "order_time_id";
+    public final static String PARAM_CLIENT_ORDER_SUMMARY_ID = "orderSummaryID";
+    public final static String PARAM_SERVER_ORDER_SUMMARY_ID = "order_summary_id";
+    public final static String PARAM_CLIENT_ORDER_ID = "orderID";
+    public final static String PARAM_SERVER_ORDER_ID = "order_id";
 
     //Variants
     public final static String PARAM_CLIENT_ACCESS_LEVEL = "accessLevel";
@@ -59,6 +65,10 @@ public class APIParameter
     public final static String PARAM_SERVER_POST_TIME_STAMP = "post_time_stamp";
     public final static String PARAM_CLIENT_CONTENT_TYPE = "contentType";
     public final static String PARAM_SERVER_CONTENT_TYPE = "content_type";
+    public final static String PARAM_CLIENT_ORDER_STATUS = "orderStatus";
+    public final static String PARAM_SERVER_ORDER_STATUS = "order_status";
+    public final static String PARAM_CLIENT_ORDER_TYPE = "orderType";
+    public final static String PARAM_SERVER_ORDER_TYPE = "order_type";
 
     //Shared
     public final static String PARAM_USERNAME = "username";
@@ -69,6 +79,7 @@ public class APIParameter
     public final static String PARAM_DESCRIPTION = "description";
     public final static String PARAM_CAPACITY = "capacity";
     public final static String PARAM_TIME = "time";
+    public final static String PARAM_AMOUNT = "amount";
 
     /** Return params **/
     public final static String PARAM_USER_LOGIN = "user_login";
@@ -78,4 +89,5 @@ public class APIParameter
     public final static String PARAM_ALBUM = "album";
     public final static String PARAM_CHEF = "chef";
     public final static String PARAM_BLOB = "blob";
+    public final static String PARAM_ORDER = "order";
 }

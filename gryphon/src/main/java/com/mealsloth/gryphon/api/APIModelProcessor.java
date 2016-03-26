@@ -4,6 +4,7 @@ import com.mealsloth.gryphon.models.AlbumModel;
 import com.mealsloth.gryphon.models.BlobModel;
 import com.mealsloth.gryphon.models.ChefModel;
 import com.mealsloth.gryphon.models.ConsumerModel;
+import com.mealsloth.gryphon.models.OrderModel;
 import com.mealsloth.gryphon.models.PostModel;
 import com.mealsloth.gryphon.models.UserLoginModel;
 import com.mealsloth.gryphon.models.UserModel;
@@ -88,6 +89,23 @@ public class APIModelProcessor
                 (String)result.get(APIParameter.PARAM_SERVER_GCS_ID),
                 (String)result.get(APIParameter.PARAM_SERVER_CONTENT_TYPE),
                 (String)result.get(APIParameter.PARAM_TIME)
+        );
+    }
+
+    public static OrderModel ProcessOrderModel(HashMap result)
+    {
+        return new OrderModel(
+                (String)result.get(APIParameter.PARAM_ID),
+                (String)result.get(APIParameter.PARAM_SERVER_POST_ID),
+                (String)result.get(APIParameter.PARAM_SERVER_CHEF_ID),
+                (String)result.get(APIParameter.PARAM_SERVER_CONSUMER_ID),
+                (String)result.get(APIParameter.PARAM_SERVER_LOCATION_ID),
+                (String)result.get(APIParameter.PARAM_SERVER_BILLING_ID),
+                (String)result.get(APIParameter.PARAM_SERVER_ORDER_TIME_ID),
+                (String)result.get(APIParameter.PARAM_SERVER_ORDER_SUMMARY_ID),
+                (int)result.get(APIParameter.PARAM_SERVER_ORDER_STATUS),
+                (int)result.get(APIParameter.PARAM_SERVER_ORDER_TYPE),
+                (int)result.get(APIParameter.PARAM_AMOUNT)
         );
     }
 }
