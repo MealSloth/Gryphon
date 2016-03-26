@@ -57,59 +57,79 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="10dp"
+        android:layout_gravity="center_horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/login_request"
-            android:layout_gravity="center_horizontal"
-            android:textSize="30sp"/>
-
-        <EditText
-            android:id="@+id/et_login_email"
-            android:layout_width="250dp"
+        <LinearLayout
+            android:layout_width="280dp"
             android:layout_height="50dp"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:hint="@string/hint_email"
-            android:layout_gravity="center_horizontal"
-            android:inputType="textEmailAddress"
-            android:singleLine="true"/>
+            android:paddingTop="1dp"
+            android:paddingStart="1dp"
+            android:paddingEnd="1dp"
+            android:background="@color/black_t80">
 
-        <EditText
-            android:id="@+id/et_login_password"
-            android:layout_width="250dp"
+            <EditText
+                android:id="@+id/et_login_email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:hint="@string/hint_email"
+                android:layout_gravity="center_horizontal"
+                android:inputType="textEmailAddress"
+                android:singleLine="true"
+                android:padding="5dp"
+                android:background="@color/white"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="280dp"
             android:layout_height="50dp"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:hint="@string/hint_password"
-            android:layout_gravity="center_horizontal"
-            android:inputType="textPassword"
-            android:singleLine="true"/>
+            android:padding="1dp"
+            android:background="@color/black_t80">
+
+            <EditText
+                android:id="@+id/et_login_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:hint="@string/hint_password"
+                android:layout_gravity="center_horizontal"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:padding="5dp"
+                android:background="@color/white"/>
+
+        </LinearLayout>
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
             android:layout_gravity="center_horizontal"
             android:text="@string/login_button"
-            android:paddingStart="30dp"
-            android:paddingEnd="30dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:onClick="login"/>
+            android:layout_marginTop="10dp"
+            android:onClick="login"
+            android:background="@color/red_mealsloth"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
             android:layout_gravity="center_horizontal"
-            android:textColor="@color/link_blue"
             android:text="@string/signup_button"
             android:padding="10dp"
             android:clickable="true"
-            android:onClick="toSignup"/>
+            android:layout_marginTop="10dp"
+            android:onClick="toSignup"
+            android:background="@color/red_mealsloth"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/tv_login_error"
