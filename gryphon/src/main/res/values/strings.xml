@@ -13,4 +13,5 @@
     <string name="password_not_match">Passwords do not match</string>
     <string name="password_too_short">Password must be at least 8 characters</string>
     <string name="firstname_lastname">%1$s %2$s</string>
+    <string name="order_from_neighbors_kitchen">Order from your neighbor's kitchen</string>
 </resources>

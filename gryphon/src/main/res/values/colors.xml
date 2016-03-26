@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#800909</color>
     <color name="colorAccent">#FF1E00</color>
     <color name="black">#000000</color>
+    <color name='black_t80'>#80000000</color>
     <color name="white">#FFFFFF</color>
     <color name="transparent">#80000000</color>
     <color name="link_blue">#0B0080</color>
