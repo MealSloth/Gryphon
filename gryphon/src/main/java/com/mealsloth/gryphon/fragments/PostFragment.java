@@ -28,6 +28,7 @@ public class PostFragment extends Fragment
 
     private TextView tvPostName;
     private TextView tvPostTime;
+    private TextView tvPostReviews;
 
     private PostModel post;
 
@@ -60,7 +61,7 @@ public class PostFragment extends Fragment
                              Bundle savedInstanceState)
     {
         this.fragmentView = inflater.inflate(R.layout.fragment_post, container, false);
-        init();
+        this.init();
         return this.fragmentView;
     }
 
@@ -88,16 +89,6 @@ public class PostFragment extends Fragment
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener
     {
         void onFragmentInteraction(Uri uri);
@@ -108,8 +99,10 @@ public class PostFragment extends Fragment
     {
         this.tvPostName = (TextView)this.fragmentView.findViewById(R.id.tv_fragment_post_name);
         this.tvPostTime = (TextView)this.fragmentView.findViewById(R.id.tv_fragment_post_time);
+        this.tvPostReviews = (TextView)this.fragmentView.findViewById(R.id.tv_fragment_post_reviews);
 
         this.tvPostName.setText(this.post.name);
-        this.tvPostTime.setText(this.post.postTime);
+        this.tvPostTime.setText(this.post.postTime.substring(11,19));
+        this.tvPostReviews.setText("0 Reviews");
     }
 }
