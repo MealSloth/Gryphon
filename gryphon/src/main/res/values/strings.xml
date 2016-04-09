@@ -13,10 +13,11 @@
     <string name="password_not_match">Passwords do not match</string>
     <string name="password_too_short">Password must be at least 8 characters</string>
     <string name="firstname_lastname">%1$s %2$s</string>
-    <string name="order_from_neighbors_kitchen">Order from your neighbor's kitchen</string>
+    <string name="order_from_neighbors_kitchen">Order from your\nneighbor\'s kitchen</string>
     <string name="my_orders">My Orders</string>
     <string name="my_favorites">My Favorites</string>
     <string name="my_profile">My Profile</string>
     <string name="become_a_chef">Become a Chef</string>
     <string name="feedback">Feedback</string>
+    <string name="continue_browsing">Continue Browsing</string>
 </resources>

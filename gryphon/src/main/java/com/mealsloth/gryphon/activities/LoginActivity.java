@@ -91,6 +91,12 @@ public class LoginActivity extends AbstractBaseActivity
         LoginActivity.this.startActivity(intent);
     }
 
+    public void continueBrowsing(View v)
+    {
+        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+        LoginActivity.this.startActivity(intent);
+    }
+
     //Misc
     public void init()
     {

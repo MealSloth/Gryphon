@@ -8,7 +8,7 @@ import android.os.Parcelable;
  */
 public abstract class AbstractAPIModel implements Parcelable
 {
-    String id;
+    public String id;
 
     public AbstractAPIModel(String id)
     {
