@@ -1,11 +1,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/rl_fragment_post"
+    android:id="@+id/fragment_post_ll_main"
     android:layout_width="match_parent"
     android:layout_height="280dp"
     android:orientation="vertical"
     android:layout_marginBottom="5dp"
     android:weightSum="1"
+    android:clickable="true"
+    android:onClick="onFragmentInteraction"
     tools:context="com.mealsloth.gryphon.fragments.PostFragment">
 
     <RelativeLayout

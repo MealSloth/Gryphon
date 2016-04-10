@@ -20,4 +20,6 @@
     <string name="become_a_chef">Become a Chef</string>
     <string name="feedback">Feedback</string>
     <string name="continue_browsing">Continue Browsing</string>
+    <string name="time_available">Available Time:</string>
+    <string name="time_available_next">Next Available Time:</string>
 </resources>

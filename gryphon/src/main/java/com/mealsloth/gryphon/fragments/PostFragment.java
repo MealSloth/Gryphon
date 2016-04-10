@@ -1,12 +1,12 @@
 package com.mealsloth.gryphon.fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mealsloth.gryphon.R;
@@ -17,7 +17,7 @@ import com.mealsloth.gryphon.models.PostModel;
  * Activities that contain this fragment must implement the
  * {@link PostFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link PostFragment#newInstance} factory method to
+ * Use the {@link PostFragment#NewInstance} factory method to
  * create an instance of this fragment.
  */
 public class PostFragment extends Fragment
@@ -26,20 +26,22 @@ public class PostFragment extends Fragment
 
     private View fragmentView;
 
+    private LinearLayout llMain;
+
     private TextView tvPostName;
     private TextView tvPostTime;
     private TextView tvPostReviews;
 
     private PostModel post;
 
-    private OnFragmentInteractionListener mListener;
+    private OnFragmentInteractionListener listener;
 
     public PostFragment()
     {
         // Required empty public constructor
     }
 
-    public static PostFragment newInstance(PostModel post)
+    public static PostFragment NewInstance(PostModel post)
     {
         PostFragment fragment = new PostFragment();
         Bundle args = new Bundle();
@@ -65,10 +67,11 @@ public class PostFragment extends Fragment
         return this.fragmentView;
     }
 
-    public void onPostClick(Uri uri)
+    public void onPostClick(View v)
     {
-        if (mListener != null)
-            mListener.onFragmentInteraction(uri);
+        System.out.println("Clicked post with name: " + this.post.name);
+        if (listener != null)
+            listener.onFragmentInteraction(v);
     }
 
     @Override
@@ -76,7 +79,7 @@ public class PostFragment extends Fragment
     {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener)
-            mListener = (OnFragmentInteractionListener) context;
+            listener = (OnFragmentInteractionListener) context;
         else
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -86,17 +89,20 @@ public class PostFragment extends Fragment
     public void onDetach()
     {
         super.onDetach();
-        mListener = null;
+        listener = null;
     }
 
     public interface OnFragmentInteractionListener
     {
-        void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(View v);
     }
 
     //Misc
     private void init()
     {
+        this.llMain = (LinearLayout)this.fragmentView.findViewById(R.id.fragment_post_ll_main);
+        this.llMain.setTag(this.post.id);
+
         this.tvPostName = (TextView)this.fragmentView.findViewById(R.id.tv_fragment_post_name);
         this.tvPostTime = (TextView)this.fragmentView.findViewById(R.id.tv_fragment_post_time);
         this.tvPostReviews = (TextView)this.fragmentView.findViewById(R.id.tv_fragment_post_reviews);

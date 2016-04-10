@@ -1,8 +1,9 @@
 package com.mealsloth.gryphon.activities;
 
-import android.net.Uri;
+import android.content.Intent;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
+import android.view.View;
 
 import com.mealsloth.gryphon.R;
 import com.mealsloth.gryphon.api.request.PostRequest;
@@ -12,7 +13,7 @@ import com.mealsloth.gryphon.models.PostModel;
 
 import java.util.ArrayList;
 
-public class HomeActivity extends AbstractBaseFragmentActivity
+public class HomeActivity extends AbstractBaseFragmentActivity implements PostFragment.OnFragmentInteractionListener
 {
     private ArrayList<PostModel> posts;
 
@@ -42,7 +43,7 @@ public class HomeActivity extends AbstractBaseFragmentActivity
                 this.posts = postsResult.posts;
                 for (int i = 0; i < this.posts.size(); i++)
                 {
-                    PostFragment postFragment = PostFragment.newInstance(this.posts.get(i));
+                    PostFragment postFragment = PostFragment.NewInstance(this.posts.get(i));
                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                     ft.add(R.id.ll_activity_home_container, postFragment).commit();
                 }
@@ -54,8 +55,23 @@ public class HomeActivity extends AbstractBaseFragmentActivity
         System.out.println("Received result error during post get");
     }
 
-    public void onFragmentInteraction(Uri uri)
+    public void onFragmentInteraction(View v)
     {
-        System.out.println("Interaction");
+        PostModel post = null;
+        String postId = (String)v.getTag();
+        for (PostModel pm : this.posts)
+        {
+            if (pm.id.equals(postId))
+            {
+                post = pm;
+                break;
+            }
+        }
+        if (post != null)
+        {
+            Intent intent = new Intent(HomeActivity.this, PostDetailActivity.class);
+            intent.putExtra(PostDetailActivity.INTENT_POST, post);
+            HomeActivity.this.startActivity(intent);
+        }
     }
 }

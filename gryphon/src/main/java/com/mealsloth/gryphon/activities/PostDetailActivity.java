@@ -1,0 +1,60 @@
+package com.mealsloth.gryphon.activities;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
+
+import com.mealsloth.gryphon.R;
+import com.mealsloth.gryphon.models.PostModel;
+
+import java.util.ArrayList;
+
+public class PostDetailActivity extends AbstractBaseActivity
+{
+    public static final String INTENT_POST = "post";
+
+    private PostModel post;
+
+    private TextView tvPostName;
+    private TextView tvPostDescription;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_post_detail);
+        this.init();
+    }
+
+    //Results
+    protected void handleReceiveResultProgress(ArrayList results, String methodName)
+    {
+        System.out.println("Received result progress");
+    }
+
+    protected void handleReceiveResultFinished(ArrayList results, String methodName)
+    {
+        System.out.println("Received result finished");
+    }
+
+    protected void handleReceiveResultError(ArrayList results, String methodName)
+    {
+        System.out.println("Received result error");
+    }
+
+    //Misc
+    private void init()
+    {
+        Intent intent = this.getIntent();
+        if (intent.hasExtra(PostDetailActivity.INTENT_POST))
+            this.post = intent.getParcelableExtra(PostDetailActivity.INTENT_POST);
+        else
+            throw new RuntimeException("No post included in intent");
+
+        this.tvPostName = (TextView)findViewById(R.id.activity_post_detail_tv_post_name);
+        this.tvPostDescription = (TextView)findViewById(R.id.activity_post_detail_tv_post_description);
+
+        this.tvPostName.setText(this.post.name);
+        this.tvPostDescription.setText(this.post.description);
+    }
+}
