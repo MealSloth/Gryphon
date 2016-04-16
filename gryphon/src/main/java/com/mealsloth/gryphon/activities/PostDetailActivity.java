@@ -17,6 +17,8 @@ public class PostDetailActivity extends AbstractBaseActivity
 
     private TextView tvPostName;
     private TextView tvPostDescription;
+    private TextView tvTimeAvailable;
+    private TextView tvTimeAvailableNext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -53,8 +55,12 @@ public class PostDetailActivity extends AbstractBaseActivity
 
         this.tvPostName = (TextView)findViewById(R.id.activity_post_detail_tv_post_name);
         this.tvPostDescription = (TextView)findViewById(R.id.activity_post_detail_tv_post_description);
+        this.tvTimeAvailable = (TextView)findViewById(R.id.activity_post_detail_tv_time_available);
+        this.tvTimeAvailableNext = (TextView)findViewById(R.id.activity_post_detail_tv_time_available_next);
 
         this.tvPostName.setText(this.post.name);
         this.tvPostDescription.setText(this.post.description);
+        this.tvTimeAvailable.setText(this.post.postTime.substring(5,19).replace("T", " "));
+        this.tvTimeAvailableNext.setText(this.post.expireTime.substring(5,19).replace("T", " "));
     }
 }

@@ -22,4 +22,7 @@
     <string name="continue_browsing">Continue Browsing</string>
     <string name="time_available">Available Time:</string>
     <string name="time_available_next">Next Available Time:</string>
+    <string name="pickup_location">Pickup Location:</string>
+    <string name="order_verb">Order</string>
+    <string name="reviews_title">Reviews</string>
 </resources>
