@@ -23,7 +23,8 @@
         <activity android:name=".activities.HomeActivity" />
         <activity android:name=".activities.SignupActivity" />
         <activity android:name=".activities.UserProfileActivity" />
-        <activity android:name=".activities.PostDetailActivity"></activity>
+        <activity android:name=".activities.PostDetailActivity" />
+        <activity android:name=".activities.ShoppingCartActivity"></activity>
     </application>
 
 </manifest>

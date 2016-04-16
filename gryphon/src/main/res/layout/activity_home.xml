@@ -44,11 +44,14 @@
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/activity_post_detail_iv_shopping_cart"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="6dp"
+            android:clickable="true"
+            android:onClick="startShoppingCartActivity"
             android:src="@mipmap/ic_local_grocery_store_black_24dp"/>
 
     </RelativeLayout>

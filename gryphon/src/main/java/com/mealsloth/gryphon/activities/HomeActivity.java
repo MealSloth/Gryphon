@@ -74,4 +74,11 @@ public class HomeActivity extends AbstractBaseFragmentActivity implements PostFr
             HomeActivity.this.startActivity(intent);
         }
     }
+
+    //Misc
+    public void startShoppingCartActivity(View v)
+    {
+        Intent intent = new Intent(HomeActivity.this, ShoppingCartActivity.class);
+        HomeActivity.this.startActivity(intent);
+    }
 }

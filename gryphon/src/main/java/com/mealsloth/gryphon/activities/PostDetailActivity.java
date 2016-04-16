@@ -2,6 +2,7 @@ package com.mealsloth.gryphon.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.mealsloth.gryphon.R;
@@ -62,5 +63,11 @@ public class PostDetailActivity extends AbstractBaseActivity
         this.tvPostDescription.setText(this.post.description);
         this.tvTimeAvailable.setText(this.post.postTime.substring(5,19).replace("T", " "));
         this.tvTimeAvailableNext.setText(this.post.expireTime.substring(5,19).replace("T", " "));
+    }
+
+    public void startShoppingCartActivity(View v)
+    {
+        Intent intent = new Intent(PostDetailActivity.this, ShoppingCartActivity.class);
+        PostDetailActivity.this.startActivity(intent);
     }
 }

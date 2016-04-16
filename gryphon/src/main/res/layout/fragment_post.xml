@@ -13,7 +13,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="220dp"
-        android:background="@drawable/food_sample">
+        android:background="@drawable/meal_sample">
 
         <TextView
             android:id="@+id/tv_price"
