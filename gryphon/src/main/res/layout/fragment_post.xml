@@ -11,6 +11,7 @@
     tools:context="com.mealsloth.gryphon.fragments.PostFragment">
 
     <RelativeLayout
+        android:id="@+id/fragment_post_rl_top"
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:background="@drawable/meal_sample">

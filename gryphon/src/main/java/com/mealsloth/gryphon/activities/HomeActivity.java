@@ -11,11 +11,15 @@ import com.mealsloth.gryphon.api.result.PostResult;
 import com.mealsloth.gryphon.fragments.PostFragment;
 import com.mealsloth.gryphon.models.PostModel;
 
+import org.joda.time.DateTime;
+
+import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 
 public class HomeActivity extends AbstractBaseFragmentActivity implements PostFragment.OnFragmentInteractionListener
 {
     private ArrayList<PostModel> posts;
+    private DateTime lastTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -41,12 +45,9 @@ public class HomeActivity extends AbstractBaseFragmentActivity implements PostFr
             case PostRequest.METHOD_POST_PAGE:
                 PostResult postsResult = new PostResult(results);
                 this.posts = postsResult.posts;
-                for (int i = 0; i < this.posts.size(); i++)
-                {
-                    PostFragment postFragment = PostFragment.NewInstance(this.posts.get(i));
-                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    ft.add(R.id.ll_activity_home_container, postFragment).commit();
-                }
+                if (this.posts != null)
+                    for (int i = 0; i < this.posts.size(); i++)
+                        this.addFragment(i);
         }
     }
 
@@ -80,5 +81,33 @@ public class HomeActivity extends AbstractBaseFragmentActivity implements PostFr
     {
         Intent intent = new Intent(HomeActivity.this, ShoppingCartActivity.class);
         HomeActivity.this.startActivity(intent);
+    }
+
+    private void addFragment(int index)
+    {
+        String banner = getBanner(index);
+        PostFragment postFragment = PostFragment.NewInstance(this.posts.get(index), banner);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.ll_activity_home_container, postFragment).commit();
+    }
+
+    private String getBanner(int index)
+    {
+        String result = null;
+        DateTime newDateTime = DateTime.parse(this.posts.get(index).expireTime);
+        int newTime = newDateTime.dayOfYear().get();
+        if ((this.lastTime != null && this.lastTime.dayOfYear().get() > newTime) || index == 0)
+            result = this.getMonthForInt(newDateTime.getMonthOfYear()) + " " + newDateTime.getDayOfMonth();
+        this.lastTime = newDateTime;
+        return result;
+    }
+
+    private String getMonthForInt(int monthInt)
+    {
+        String monthString = "wrong";
+        String[] monthsArray = new DateFormatSymbols().getMonths();
+        if (monthInt >= 0 && monthInt <= 11)
+            monthString = monthsArray[monthInt];
+        return monthString;
     }
 }

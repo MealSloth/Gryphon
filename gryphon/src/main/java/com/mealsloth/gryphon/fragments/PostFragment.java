@@ -3,10 +3,13 @@ package com.mealsloth.gryphon.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mealsloth.gryphon.R;
@@ -24,9 +27,12 @@ public class PostFragment extends Fragment
 {
     private static final String ARG_POST = "post";
 
+    private String bannerText;
+
     private View fragmentView;
 
     private LinearLayout llMain;
+    private RelativeLayout rlTop;
 
     private TextView tvPostName;
     private TextView tvPostTime;
@@ -41,12 +47,13 @@ public class PostFragment extends Fragment
         // Required empty public constructor
     }
 
-    public static PostFragment NewInstance(PostModel post)
+    public static PostFragment NewInstance(PostModel post, String banner)
     {
         PostFragment fragment = new PostFragment();
         Bundle args = new Bundle();
         args.putParcelable(ARG_POST, post);
         fragment.setArguments(args);
+        fragment.bannerText = banner;
         return fragment;
     }
 
@@ -101,14 +108,32 @@ public class PostFragment extends Fragment
     private void init()
     {
         this.llMain = (LinearLayout)this.fragmentView.findViewById(R.id.fragment_post_ll_main);
-        this.llMain.setTag(this.post.id);
+        this.rlTop = (RelativeLayout)this.fragmentView.findViewById(R.id.fragment_post_rl_top);
 
         this.tvPostName = (TextView)this.fragmentView.findViewById(R.id.tv_fragment_post_name);
         this.tvPostTime = (TextView)this.fragmentView.findViewById(R.id.tv_fragment_post_time);
         this.tvPostReviews = (TextView)this.fragmentView.findViewById(R.id.tv_fragment_post_reviews);
 
+        this.llMain.setTag(this.post.id);
+
         this.tvPostName.setText(this.post.name);
         this.tvPostTime.setText(this.post.postTime.substring(11,19));
-        this.tvPostReviews.setText("0 Reviews");
+        this.tvPostReviews.setText("1 Review");
+
+        if (bannerText != null)
+            this.addBanner(this.bannerText);
+    }
+
+    public void addBanner(String text)
+    {
+        TextView banner = new TextView(getContext());
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, 75);
+        params.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+        banner.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white_t80));
+        banner.setText(text);
+        banner.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 22.0f);
+        banner.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        this.rlTop.addView(banner, params);
     }
 }
