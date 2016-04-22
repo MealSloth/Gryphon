@@ -3,10 +3,15 @@ package com.mealsloth.gryphon.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mealsloth.gryphon.R;
+import com.mealsloth.gryphon.api.request.BlobRequest;
+import com.mealsloth.gryphon.api.result.BlobResult;
+import com.mealsloth.gryphon.models.BlobModel;
 import com.mealsloth.gryphon.models.PostModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -15,11 +20,14 @@ public class PostDetailActivity extends AbstractBaseActivity
     public static final String INTENT_POST = "post";
 
     private PostModel post;
+    private ArrayList<BlobModel> blobs;
 
     private TextView tvPostName;
     private TextView tvPostDescription;
     private TextView tvTimeAvailable;
     private TextView tvTimeAvailableNext;
+
+    private ImageView ivPost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -27,6 +35,10 @@ public class PostDetailActivity extends AbstractBaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_detail);
         this.init();
+        new BlobRequest()
+                .activity(this)
+                .methodBlobs(this.post.albumID, 1)
+                .request();
     }
 
     //Results
@@ -37,7 +49,15 @@ public class PostDetailActivity extends AbstractBaseActivity
 
     protected void handleReceiveResultFinished(ArrayList results, String methodName)
     {
-        System.out.println("Received result finished");
+        switch (methodName)
+        {
+            case BlobRequest.METHOD_BLOBS:
+                BlobResult blobResult = new BlobResult(results);
+                this.blobs = blobResult.blobs;
+                if (this.blobs != null && this.blobs.size() > 0)
+                    Picasso.with(this).load(this.blobs.get(0).url).into(this.ivPost);
+                break;
+        }
     }
 
     protected void handleReceiveResultError(ArrayList results, String methodName)
@@ -58,6 +78,7 @@ public class PostDetailActivity extends AbstractBaseActivity
         this.tvPostDescription = (TextView)findViewById(R.id.activity_post_detail_tv_post_description);
         this.tvTimeAvailable = (TextView)findViewById(R.id.activity_post_detail_tv_time_available);
         this.tvTimeAvailableNext = (TextView)findViewById(R.id.activity_post_detail_tv_time_available_next);
+        this.ivPost = (ImageView)findViewById(R.id.activity_post_detail_iv_post);
 
         this.tvPostName.setText(this.post.name);
         this.tvPostDescription.setText(this.post.description);

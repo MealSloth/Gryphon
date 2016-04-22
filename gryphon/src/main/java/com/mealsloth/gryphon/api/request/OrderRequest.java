@@ -5,6 +5,7 @@ import com.mealsloth.gryphon.api.APIHost.APIHostEnum;
 import com.mealsloth.gryphon.api.APIModelProcessor;
 import com.mealsloth.gryphon.api.APIParameter;
 import com.mealsloth.gryphon.api.JsonPost;
+import com.mealsloth.gryphon.fragments.AbstractBaseFragment;
 import com.mealsloth.gryphon.models.OrderModel;
 
 import org.codehaus.jackson.map.ObjectMapper;
@@ -19,9 +20,17 @@ public class OrderRequest extends AbstractAPIRequest
 {
     public final static String METHOD_ORDER = "Order";
 
+    @Override
     public OrderRequest activity(AbstractBaseActivity activity)
     {
-        this.activity = activity;
+        super.activity(activity);
+        return this;
+    }
+
+    @Override
+    public OrderRequest fragment(AbstractBaseFragment fragment)
+    {
+        super.fragment(fragment);
         return this;
     }
 

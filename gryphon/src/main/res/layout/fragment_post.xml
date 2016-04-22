@@ -13,8 +13,12 @@
     <RelativeLayout
         android:id="@+id/fragment_post_rl_top"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:background="@drawable/meal_sample">
+        android:layout_height="220dp">
+
+        <ImageView
+            android:id="@+id/fragment_post_iv_post"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
         <TextView
             android:id="@+id/tv_price"

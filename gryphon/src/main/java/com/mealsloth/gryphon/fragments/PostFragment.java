@@ -2,28 +2,27 @@ package com.mealsloth.gryphon.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mealsloth.gryphon.R;
+import com.mealsloth.gryphon.activities.AbstractBaseFragmentActivity;
+import com.mealsloth.gryphon.api.request.BlobRequest;
+import com.mealsloth.gryphon.api.result.BlobResult;
+import com.mealsloth.gryphon.models.BlobModel;
 import com.mealsloth.gryphon.models.PostModel;
+import com.squareup.picasso.Picasso;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link PostFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link PostFragment#NewInstance} factory method to
- * create an instance of this fragment.
- */
-public class PostFragment extends Fragment
+import java.util.ArrayList;
+
+public class PostFragment extends AbstractBaseFragment
 {
     private static final String ARG_POST = "post";
 
@@ -34,11 +33,14 @@ public class PostFragment extends Fragment
     private LinearLayout llMain;
     private RelativeLayout rlTop;
 
+    private ImageView ivPost;
+
     private TextView tvPostName;
     private TextView tvPostTime;
     private TextView tvPostReviews;
 
     private PostModel post;
+    private ArrayList<BlobModel> blobs;
 
     private OnFragmentInteractionListener listener;
 
@@ -63,6 +65,10 @@ public class PostFragment extends Fragment
         super.onCreate(savedInstanceState);
         if (this.getArguments() != null)
             this.post = this.getArguments().getParcelable(ARG_POST);
+        new BlobRequest()
+                .fragment(this)
+                .methodBlobs(this.post.albumID, 1)
+                .request();
     }
 
     @Override
@@ -74,19 +80,12 @@ public class PostFragment extends Fragment
         return this.fragmentView;
     }
 
-    public void onPostClick(View v)
-    {
-        System.out.println("Clicked post with name: " + this.post.name);
-        if (listener != null)
-            listener.onFragmentInteraction(v);
-    }
-
     @Override
     public void onAttach(Context context)
     {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener)
-            listener = (OnFragmentInteractionListener) context;
+            this.listener = (OnFragmentInteractionListener) context;
         else
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -96,7 +95,7 @@ public class PostFragment extends Fragment
     public void onDetach()
     {
         super.onDetach();
-        listener = null;
+        this.listener = null;
     }
 
     public interface OnFragmentInteractionListener
@@ -104,11 +103,37 @@ public class PostFragment extends Fragment
         void onFragmentInteraction(View v);
     }
 
+    //Results
+    protected void handleReceiveResultProgress(ArrayList results, String methodName)
+    {
+        System.out.println("Received result progress during blob get");
+    }
+
+    protected void handleReceiveResultFinished(ArrayList results, String methodName)
+    {
+        switch (methodName)
+        {
+            case BlobRequest.METHOD_BLOBS:
+                BlobResult blobResult = new BlobResult(results);
+                this.blobs = blobResult.blobs;
+                if (this.blobs != null && this.blobs.size() > 0)
+                    Picasso.with(getContext()).load(this.blobs.get(0).url).into(this.ivPost);
+                break;
+        }
+    }
+
+    protected void handleReceiveResultError(ArrayList results, String methodName)
+    {
+        System.out.println("Received result error during blob get");
+    }
+
     //Misc
-    private void init()
+    public void init()
     {
         this.llMain = (LinearLayout)this.fragmentView.findViewById(R.id.fragment_post_ll_main);
         this.rlTop = (RelativeLayout)this.fragmentView.findViewById(R.id.fragment_post_rl_top);
+
+        this.ivPost = (ImageView)this.fragmentView.findViewById(R.id.fragment_post_iv_post);
 
         this.tvPostName = (TextView)this.fragmentView.findViewById(R.id.tv_fragment_post_name);
         this.tvPostTime = (TextView)this.fragmentView.findViewById(R.id.tv_fragment_post_time);

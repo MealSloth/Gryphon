@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.mealsloth.gryphon.R;
+import com.mealsloth.gryphon.api.request.BlobRequest;
 import com.mealsloth.gryphon.api.request.PostRequest;
+import com.mealsloth.gryphon.api.result.BlobResult;
 import com.mealsloth.gryphon.api.result.PostResult;
 import com.mealsloth.gryphon.fragments.PostFragment;
 import com.mealsloth.gryphon.models.PostModel;
@@ -48,6 +50,7 @@ public class HomeActivity extends AbstractBaseFragmentActivity implements PostFr
                 if (this.posts != null)
                     for (int i = 0; i < this.posts.size(); i++)
                         this.addFragment(i);
+                break;
         }
     }
 

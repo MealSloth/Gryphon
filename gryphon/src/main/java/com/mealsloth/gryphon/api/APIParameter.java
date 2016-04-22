@@ -79,7 +79,9 @@ public class APIParameter
     public final static String PARAM_DESCRIPTION = "description";
     public final static String PARAM_CAPACITY = "capacity";
     public final static String PARAM_TIME = "time";
+    public final static String PARAM_URL = "url";
     public final static String PARAM_AMOUNT = "amount";
+    public final static String PARAM_COUNT = "count";
 
     /** Return params **/
     public final static String PARAM_USER_LOGIN = "user_login";
@@ -89,5 +91,6 @@ public class APIParameter
     public final static String PARAM_ALBUM = "album";
     public final static String PARAM_CHEF = "chef";
     public final static String PARAM_BLOB = "blob";
+    public final static String PARAM_BLOBS = "blobs";
     public final static String PARAM_ORDER = "order";
 }

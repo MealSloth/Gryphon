@@ -8,18 +8,20 @@ import android.os.Parcelable;
  */
 public class BlobModel extends AbstractAPIModel
 {
-    String albumID;
-    String gcsID;
-    String contentType;
-    String time;
+    public String albumID;
+    public String gcsID;
+    public String contentType;
+    public String time;
+    public String url;
 
-    public BlobModel(String id, String albumID, String gcsID, String contentType, String time)
+    public BlobModel(String id, String albumID, String gcsID, String contentType, String time, String url)
     {
         super(id);
         this.albumID = albumID;
         this.gcsID = gcsID;
         this.contentType = contentType;
         this.time = time;
+        this.url = url;
     }
 
     private BlobModel(Parcel in)
@@ -29,6 +31,7 @@ public class BlobModel extends AbstractAPIModel
         this.gcsID = in.readString();
         this.contentType = in.readString();
         this.time = in.readString();
+        this.url = in.readString();
     }
 
     @Override

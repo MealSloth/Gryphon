@@ -5,6 +5,7 @@ import com.mealsloth.gryphon.api.APIParameter;
 import com.mealsloth.gryphon.api.JsonPost;
 import com.mealsloth.gryphon.api.APIHost.APIHostEnum;
 import com.mealsloth.gryphon.api.APIModelProcessor;
+import com.mealsloth.gryphon.fragments.AbstractBaseFragment;
 import com.mealsloth.gryphon.models.UserLoginModel;
 
 import org.codehaus.jackson.map.ObjectMapper;
@@ -22,7 +23,13 @@ public class UserLoginRequest extends AbstractAPIRequest
 
     public UserLoginRequest activity(AbstractBaseActivity activity)
     {
-        this.activity = activity;
+        super.activity(activity);
+        return this;
+    }
+
+    public UserLoginRequest fragment(AbstractBaseFragment fragment)
+    {
+        super.fragment(fragment);
         return this;
     }
 

@@ -88,7 +88,8 @@ public class APIModelProcessor
                 (String)result.get(APIParameter.PARAM_SERVER_ALBUM_ID),
                 (String)result.get(APIParameter.PARAM_SERVER_GCS_ID),
                 (String)result.get(APIParameter.PARAM_SERVER_CONTENT_TYPE),
-                (String)result.get(APIParameter.PARAM_TIME)
+                (String)result.get(APIParameter.PARAM_TIME),
+                (String)result.get(APIParameter.PARAM_URL)
         );
     }
 

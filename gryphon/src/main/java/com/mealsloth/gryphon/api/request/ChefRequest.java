@@ -5,6 +5,7 @@ import com.mealsloth.gryphon.api.APIHost.APIHostEnum;
 import com.mealsloth.gryphon.api.APIModelProcessor;
 import com.mealsloth.gryphon.api.APIParameter;
 import com.mealsloth.gryphon.api.JsonPost;
+import com.mealsloth.gryphon.fragments.AbstractBaseFragment;
 import com.mealsloth.gryphon.models.ChefModel;
 
 import org.codehaus.jackson.map.ObjectMapper;
@@ -21,7 +22,13 @@ public class ChefRequest extends AbstractAPIRequest
 
     public ChefRequest activity(AbstractBaseActivity activity)
     {
-        this.activity = activity;
+        super.activity(activity);
+        return this;
+    }
+
+    public ChefRequest fragment(AbstractBaseFragment fragment)
+    {
+        super.fragment(fragment);
         return this;
     }
 

@@ -5,6 +5,7 @@ import com.mealsloth.gryphon.api.APIHost.APIHostEnum;
 import com.mealsloth.gryphon.api.APIModelProcessor;
 import com.mealsloth.gryphon.api.APIParameter;
 import com.mealsloth.gryphon.api.JsonPost;
+import com.mealsloth.gryphon.fragments.AbstractBaseFragment;
 import com.mealsloth.gryphon.models.PostModel;
 
 import org.codehaus.jackson.map.ObjectMapper;
@@ -23,7 +24,13 @@ public class PostRequest extends AbstractAPIRequest
 
     public PostRequest activity(AbstractBaseActivity activity)
     {
-        this.activity = activity;
+        super.activity(activity);
+        return this;
+    }
+
+    public PostRequest fragment(AbstractBaseFragment fragment)
+    {
+        super.fragment(fragment);
         return this;
     }
 
