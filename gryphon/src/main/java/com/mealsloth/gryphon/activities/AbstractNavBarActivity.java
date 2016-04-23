@@ -3,7 +3,6 @@ package com.mealsloth.gryphon.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -34,9 +33,18 @@ public abstract class AbstractNavBarActivity extends AbstractBaseActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        this.setRootView();
         this.initMenuItems();
-        this.addNavBar();
         this.addNavigationDrawer();
+        this.addNavBar();
+    }
+
+    private void setRootView()
+    {
+        this.rootView = (RelativeLayout)this.findViewById(R.id.activity_nav_bar_rl_container);
+        if (this.rootView == null)
+            throw new RuntimeException("Children of AbstractNavBarActivity must use RelativeLayout "
+                    + "container with ID activity_nav_bar_rl_container");
     }
 
     private void initMenuItems()
@@ -51,11 +59,6 @@ public abstract class AbstractNavBarActivity extends AbstractBaseActivity
 
     private void addNavBar()
     {
-        this.rootView = (RelativeLayout)this.findViewById(R.id.activity_nav_bar_rl_container);
-        if (this.rootView == null)
-            throw new RuntimeException("Children of AbstractNavBarActivity must use RelativeLayout "
-                    + "container with ID activity_nav_bar_rl_container");
-
         RelativeLayout.LayoutParams rvParams = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
@@ -73,8 +76,6 @@ public abstract class AbstractNavBarActivity extends AbstractBaseActivity
 
     private void addNavigationDrawer()
     {
-        this.rootView.addView(View.inflate(this, R.layout.fragment_navigation_drawer, null));
-
         this.drawerLayout = (DrawerLayout)this.findViewById(R.id.fragment_navigation_drawer_dl_root);
         this.listView = (ListView)this.findViewById(R.id.fragment_navigation_drawer_lv_menu);
 
@@ -85,6 +86,8 @@ public abstract class AbstractNavBarActivity extends AbstractBaseActivity
         ));
 
         this.listView.setOnItemClickListener(new DrawerItemClickListener());
+
+        this.drawerLayout.setClickable(false);
     }
 
     //Listeners
@@ -105,15 +108,18 @@ public abstract class AbstractNavBarActivity extends AbstractBaseActivity
     //Buttons
     public void startShoppingCartActivity(View v)
     {
-        Intent intent = new Intent(AbstractNavBarActivity.this, ShoppingCartActivity.class);
-        AbstractNavBarActivity.this.startActivity(intent);
+        if (!getClass().getCanonicalName().equals(ShoppingCartActivity.class.getCanonicalName()))
+        {
+            Intent intent = new Intent(AbstractNavBarActivity.this, ShoppingCartActivity.class);
+            AbstractNavBarActivity.this.startActivity(intent);
+        }
     }
 
     public void toggleNavigationDrawer(View v)
     {
-//        if (this.drawerLayout.isDrawerOpen(Gravity.LEFT))
-//            this.drawerLayout.closeDrawer(Gravity.LEFT);
-//        else
+        if (this.drawerLayout.isDrawerOpen(Gravity.LEFT))
+            this.drawerLayout.closeDrawer(Gravity.LEFT);
+        else
             this.drawerLayout.openDrawer(Gravity.LEFT);
     }
 }

@@ -1,140 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_nav_bar_rl_container"
+<com.mealsloth.gryphon.helpers.ui.NavigationDrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_navigation_drawer_dl_root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context="com.mealsloth.gryphon.activities.AbstractNavBarActivity">
+    android:layout_height="match_parent">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/activity_tab_bar_rl_container"
+    <FrameLayout
+        android:id="@+id/fragment_navigation_drawer_fl_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        tools:context="com.mealsloth.gryphon.activities.AbstractTabBarFragmentActivity">
+        android:layout_height="match_parent">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/activity_nav_bar_rl_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:context="com.mealsloth.gryphon.activities.UserProfileActivity">
+            android:background="@color/white"
+            tools:context="com.mealsloth.gryphon.activities.AbstractNavBarActivity">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:paddingBottom="15dp"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/profile_photo_test"/>
-
-                <TextView
-                    android:id="@+id/tv_user_profile_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:layout_gravity="center_horizontal"/>
-
-                <TextView
-                    android:id="@+id/tv_user_profile_gender"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:layout_gravity="center_horizontal"/>
-
-                <TextView
-                    android:id="@+id/tv_user_profile_date_of_birth"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:layout_gravity="center_horizontal"/>
-
-            </LinearLayout>
-
-            <LinearLayout
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/activity_tab_bar_rl_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/white">
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                tools:context="com.mealsloth.gryphon.activities.AbstractTabBarFragmentActivity">
 
-                <TextView
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@color/red_light_tBB"
-                    android:textColor="@color/white"
-                    android:textSize="24sp"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:clickable="true"
-                    android:gravity="center_vertical"
-                    android:padding="5dp"
-                    android:text="@string/my_orders"/>
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    tools:context="com.mealsloth.gryphon.activities.UserProfileActivity">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@color/red_light_tBB"
-                    android:textColor="@color/white"
-                    android:textSize="24sp"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:clickable="true"
-                    android:gravity="center_vertical"
-                    android:text="@string/my_favorites"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:paddingBottom="15dp"
+                        android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@color/red_light_tBB"
-                    android:textColor="@color/white"
-                    android:textSize="24sp"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:clickable="true"
-                    android:gravity="center_vertical"
-                    android:text="@string/my_profile"/>
+                        <ImageView
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/profile_photo_test"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@color/red_light_tBB"
-                    android:textColor="@color/white"
-                    android:textSize="24sp"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:clickable="true"
-                    android:gravity="center_vertical"
-                    android:text="@string/become_a_chef"/>
+                        <TextView
+                            android:id="@+id/tv_user_profile_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"
+                            android:layout_gravity="center_horizontal"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@color/red_light_tBB"
-                    android:textColor="@color/white"
-                    android:textSize="24sp"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:clickable="true"
-                    android:gravity="center_vertical"
-                    android:text="@string/feedback"/>
+                        <TextView
+                            android:id="@+id/tv_user_profile_gender"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"
+                            android:layout_gravity="center_horizontal"/>
 
-            </LinearLayout>
+                        <TextView
+                            android:id="@+id/tv_user_profile_date_of_birth"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"
+                            android:layout_gravity="center_horizontal"/>
 
-        </LinearLayout>
+                    </LinearLayout>
 
-    </RelativeLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@color/white">
 
-</RelativeLayout>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@color/red_light_tBB"
+                            android:textColor="@color/white"
+                            android:textSize="24sp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:clickable="true"
+                            android:gravity="center_vertical"
+                            android:padding="5dp"
+                            android:text="@string/my_orders"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@color/red_light_tBB"
+                            android:textColor="@color/white"
+                            android:textSize="24sp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:clickable="true"
+                            android:gravity="center_vertical"
+                            android:text="@string/my_favorites"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@color/red_light_tBB"
+                            android:textColor="@color/white"
+                            android:textSize="24sp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:clickable="true"
+                            android:gravity="center_vertical"
+                            android:text="@string/my_profile"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@color/red_light_tBB"
+                            android:textColor="@color/white"
+                            android:textSize="24sp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:clickable="true"
+                            android:gravity="center_vertical"
+                            android:text="@string/become_a_chef"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@color/red_light_tBB"
+                            android:textColor="@color/white"
+                            android:textSize="24sp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:clickable="true"
+                            android:gravity="center_vertical"
+                            android:text="@string/feedback"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+    <ListView
+        android:id="@+id/fragment_navigation_drawer_lv_menu"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:choiceMode="singleChoice"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp"
+        android:background="@color/white"/>
+
+</com.mealsloth.gryphon.helpers.ui.NavigationDrawerLayout>

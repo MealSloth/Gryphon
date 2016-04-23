@@ -1,70 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_nav_bar_rl_container"
+<com.mealsloth.gryphon.helpers.ui.NavigationDrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_navigation_drawer_dl_root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context="com.mealsloth.gryphon.activities.AbstractNavBarActivity">
+    android:layout_height="match_parent">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/activity_tab_bar_rl_container"
+    <FrameLayout
+        android:id="@+id/fragment_navigation_drawer_fl_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        tools:context="com.mealsloth.gryphon.activities.AbstractTabBarFragmentActivity">
+        android:layout_height="match_parent">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/rl_activity_home"
+            android:id="@+id/activity_nav_bar_rl_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:context="com.mealsloth.gryphon.activities.HomeActivity">
+            android:background="@color/white"
+            tools:context="com.mealsloth.gryphon.activities.AbstractNavBarActivity">
 
-            <LinearLayout
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/activity_tab_bar_rl_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="15dp"
-                android:paddingEnd="15dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="10dp"
-                android:background="@color/white">
+                android:layout_height="match_parent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                tools:context="com.mealsloth.gryphon.activities.AbstractTabBarFragmentActivity">
 
-                <EditText
-                    android:id="@+id/et_search"
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:id="@+id/rl_activity_home"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableStart="@mipmap/ic_search_black_24dp"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:padding="4dp"
-                    android:textSize="22sp"
-                    android:drawablePadding="8dp"
-                    android:singleLine="true"
-                    android:background="@color/grey_double_light"/>
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    tools:context="com.mealsloth.gryphon.activities.HomeActivity">
 
-            </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="10dp"
+                        android:background="@color/white">
 
-            <ScrollView
-                android:id="@+id/sv_activity_home"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                        <EditText
+                            android:id="@+id/et_search"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@mipmap/ic_search_black_24dp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:padding="4dp"
+                            android:textSize="22sp"
+                            android:drawablePadding="8dp"
+                            android:singleLine="true"
+                            android:background="@color/grey_double_light"/>
 
-                <LinearLayout
-                    android:id="@+id/ll_activity_home_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    </LinearLayout>
+
+                    <ScrollView
+                        android:id="@+id/sv_activity_home"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:id="@+id/ll_activity_home_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                        </LinearLayout>
+
+                    </ScrollView>
 
                 </LinearLayout>
 
-            </ScrollView>
+            </RelativeLayout>
 
-        </LinearLayout>
+        </RelativeLayout>
 
-    </RelativeLayout>
+    </FrameLayout>
 
-</RelativeLayout>
+    <ListView
+        android:id="@+id/fragment_navigation_drawer_lv_menu"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:choiceMode="singleChoice"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp"
+        android:background="@color/white"/>
+
+</com.mealsloth.gryphon.helpers.ui.NavigationDrawerLayout>
