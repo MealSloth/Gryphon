@@ -2,9 +2,15 @@ package com.mealsloth.gryphon.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.mealsloth.gryphon.R;
@@ -16,6 +22,11 @@ public abstract class AbstractNavBarActivity extends AbstractBaseActivity
 {
     protected RelativeLayout rootView;
 
+    private DrawerLayout drawerLayout;
+    private ListView listView;
+
+    private String[] menuItems;
+
     /**
      * Child classes should only call super.onCreate() after calling setContentView()
      */
@@ -23,7 +34,19 @@ public abstract class AbstractNavBarActivity extends AbstractBaseActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        this.initMenuItems();
         this.addNavBar();
+        this.addNavigationDrawer();
+    }
+
+    private void initMenuItems()
+    {
+        this.menuItems = new String[]{
+                "About",
+                "Terms and Conditions",
+                "Report a Bug",
+                "Sign Out",
+        };
     }
 
     private void addNavBar()
@@ -48,6 +71,37 @@ public abstract class AbstractNavBarActivity extends AbstractBaseActivity
         this.rootView.addView(View.inflate(this, R.layout.nav_bar, null), rvParams);
     }
 
+    private void addNavigationDrawer()
+    {
+        this.rootView.addView(View.inflate(this, R.layout.fragment_navigation_drawer, null));
+
+        this.drawerLayout = (DrawerLayout)this.findViewById(R.id.fragment_navigation_drawer_dl_root);
+        this.listView = (ListView)this.findViewById(R.id.fragment_navigation_drawer_lv_menu);
+
+        this.listView.setAdapter(new ArrayAdapter<>(
+                this,
+                R.layout.navigation_drawer_list_item,
+                this.menuItems
+        ));
+
+        this.listView.setOnItemClickListener(new DrawerItemClickListener());
+    }
+
+    //Listeners
+    private class DrawerItemClickListener implements ListView.OnItemClickListener
+    {
+        @Override
+        public void onItemClick(AdapterView parent, View view, int index, long id)
+        {
+            handleClick(index);
+        }
+    }
+
+    private void handleClick(int index)
+    {
+        System.out.println("Click at " + String.valueOf(index));
+    }
+
     //Buttons
     public void startShoppingCartActivity(View v)
     {
@@ -55,5 +109,11 @@ public abstract class AbstractNavBarActivity extends AbstractBaseActivity
         AbstractNavBarActivity.this.startActivity(intent);
     }
 
-
+    public void toggleNavigationDrawer(View v)
+    {
+//        if (this.drawerLayout.isDrawerOpen(Gravity.LEFT))
+//            this.drawerLayout.closeDrawer(Gravity.LEFT);
+//        else
+            this.drawerLayout.openDrawer(Gravity.LEFT);
+    }
 }
