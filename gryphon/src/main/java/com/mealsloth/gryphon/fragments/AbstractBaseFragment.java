@@ -3,11 +3,8 @@ package com.mealsloth.gryphon.fragments;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
-import com.mealsloth.gryphon.R;
 import com.mealsloth.gryphon.api.APIResultReceiver;
 import com.mealsloth.gryphon.api.APIResultReceiver.Receiver;
 import com.mealsloth.gryphon.api.APIService;
@@ -29,15 +26,6 @@ public abstract class AbstractBaseFragment extends Fragment implements Receiver
         super.onCreate(savedInstanceState);
         this.receiver = new APIResultReceiver(new Handler());
         this.receiver.setReceiver(this);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
-    {
-        this.fragmentView = inflater.inflate(R.layout.fragment_post, container, false);
-        this.init();
-        return this.fragmentView;
     }
 
     @Override
@@ -90,8 +78,6 @@ public abstract class AbstractBaseFragment extends Fragment implements Receiver
     protected abstract void handleReceiveResultFinished(ArrayList results, String methodName);
 
     protected abstract void handleReceiveResultError(ArrayList results, String methodName);
-
-    public abstract void init();
 
     public interface OnFragmentInteractionListener
     {

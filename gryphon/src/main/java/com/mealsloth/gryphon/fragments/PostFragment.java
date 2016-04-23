@@ -13,7 +13,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mealsloth.gryphon.R;
-import com.mealsloth.gryphon.activities.AbstractBaseFragmentActivity;
 import com.mealsloth.gryphon.api.request.BlobRequest;
 import com.mealsloth.gryphon.api.result.BlobResult;
 import com.mealsloth.gryphon.models.BlobModel;
@@ -27,8 +26,6 @@ public class PostFragment extends AbstractBaseFragment
     private static final String ARG_POST = "post";
 
     private String bannerText;
-
-    private View fragmentView;
 
     private LinearLayout llMain;
     private RelativeLayout rlTop;
@@ -65,10 +62,6 @@ public class PostFragment extends AbstractBaseFragment
         super.onCreate(savedInstanceState);
         if (this.getArguments() != null)
             this.post = this.getArguments().getParcelable(ARG_POST);
-        new BlobRequest()
-                .fragment(this)
-                .methodBlobs(this.post.albumID, 1)
-                .request();
     }
 
     @Override
@@ -77,6 +70,10 @@ public class PostFragment extends AbstractBaseFragment
     {
         this.fragmentView = inflater.inflate(R.layout.fragment_post, container, false);
         this.init();
+        new BlobRequest()
+                .fragment(this)
+                .methodBlobs(this.post.albumID, 1)
+                .request();
         return this.fragmentView;
     }
 
@@ -96,11 +93,6 @@ public class PostFragment extends AbstractBaseFragment
     {
         super.onDetach();
         this.listener = null;
-    }
-
-    public interface OnFragmentInteractionListener
-    {
-        void onFragmentInteraction(View v);
     }
 
     //Results
@@ -149,7 +141,7 @@ public class PostFragment extends AbstractBaseFragment
             this.addBanner(this.bannerText);
     }
 
-    public void addBanner(String text)
+    private void addBanner(String text)
     {
         TextView banner = new TextView(getContext());
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(

@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/white"
+    android:weightSum="1.0"
+    tools:context=".activities.AbstractTabBarFragmentActivity">
+
+    <ImageView
+        android:id="@+id/tab_bar_item_1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.33"
+        android:clickable="true"/>
+
+    <ImageView
+        android:id="@+id/tab_bar_item_2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.34"
+        android:clickable="true"/>
+
+    <ImageView
+        android:id="@+id/tab_bar_item_3"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.33"
+        android:clickable="true"/>
+
+</LinearLayout>

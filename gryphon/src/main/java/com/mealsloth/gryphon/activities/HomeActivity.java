@@ -6,10 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.mealsloth.gryphon.R;
-import com.mealsloth.gryphon.api.request.BlobRequest;
 import com.mealsloth.gryphon.api.request.PostRequest;
-import com.mealsloth.gryphon.api.result.BlobResult;
 import com.mealsloth.gryphon.api.result.PostResult;
+import com.mealsloth.gryphon.fragments.AbstractBaseFragment;
 import com.mealsloth.gryphon.fragments.PostFragment;
 import com.mealsloth.gryphon.models.PostModel;
 
@@ -18,7 +17,7 @@ import org.joda.time.DateTime;
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 
-public class HomeActivity extends AbstractBaseFragmentActivity implements PostFragment.OnFragmentInteractionListener
+public class HomeActivity extends AbstractTabBarFragmentActivity implements AbstractBaseFragment.OnFragmentInteractionListener
 {
     private ArrayList<PostModel> posts;
     private DateTime lastTime;
@@ -26,8 +25,8 @@ public class HomeActivity extends AbstractBaseFragmentActivity implements PostFr
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        super.onCreate(savedInstanceState);
         new PostRequest()
                 .activity(this)
                 .methodPostPage(-1, null)
@@ -107,7 +106,7 @@ public class HomeActivity extends AbstractBaseFragmentActivity implements PostFr
 
     private String getMonthForInt(int monthInt)
     {
-        String monthString = "wrong";
+        String monthString = "";
         String[] monthsArray = new DateFormatSymbols().getMonths();
         if (monthInt >= 0 && monthInt <= 11)
             monthString = monthsArray[monthInt];
