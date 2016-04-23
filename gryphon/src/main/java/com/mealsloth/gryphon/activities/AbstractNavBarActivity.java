@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.mealsloth.gryphon.R;
 
@@ -86,8 +87,6 @@ public abstract class AbstractNavBarActivity extends AbstractBaseActivity
         ));
 
         this.listView.setOnItemClickListener(new DrawerItemClickListener());
-
-        this.drawerLayout.setClickable(false);
     }
 
     //Listeners
@@ -102,7 +101,22 @@ public abstract class AbstractNavBarActivity extends AbstractBaseActivity
 
     private void handleClick(int index)
     {
-        System.out.println("Click at " + String.valueOf(index));
+        switch (index)
+        {
+            case 0:
+                Toast.makeText(this, "About is not yet available", Toast.LENGTH_SHORT).show();
+                break;
+            case 1:
+                Toast.makeText(this, "Terms and conditions are not yet available", Toast.LENGTH_SHORT).show();
+                break;
+            case 2:
+                Toast.makeText(this, "Bug reporting not yet available", Toast.LENGTH_SHORT).show();
+                break;
+            case 3:
+                Intent intent = new Intent(AbstractNavBarActivity.this, LoginActivity.class);
+                AbstractNavBarActivity.this.startActivity(intent);
+                break;
+        }
     }
 
     //Buttons
