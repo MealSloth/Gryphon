@@ -14,7 +14,8 @@
     <color name="red_light_tBB">#BBFF1E00</color>
     <color name="grey">#888888</color>
     <color name="grey_light">#CCCCCC</color>
-    <color name="grey_extra_light">#F8F8F8</color>
+    <color name="grey_extra_light">#F0F0F0</color>
+    <color name="grey_double_light">#F8F8F8</color>
     <color name="grey_dark">#555555</color>
     <color name="grey_extra_dark">#2A2A2A</color>
     <color name="salmon">#FF5040</color>

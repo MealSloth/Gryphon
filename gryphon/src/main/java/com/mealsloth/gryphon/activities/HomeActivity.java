@@ -79,12 +79,6 @@ public class HomeActivity extends AbstractTabBarFragmentActivity implements Abst
     }
 
     //Misc
-    public void startShoppingCartActivity(View v)
-    {
-        Intent intent = new Intent(HomeActivity.this, ShoppingCartActivity.class);
-        HomeActivity.this.startActivity(intent);
-    }
-
     private void addFragment(int index)
     {
         String banner = getBanner(index);

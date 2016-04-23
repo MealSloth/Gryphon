@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class PostDetailActivity extends AbstractBaseActivity
+public class PostDetailActivity extends AbstractNavBarActivity
 {
     public static final String INTENT_POST = "post";
 
@@ -32,8 +32,8 @@ public class PostDetailActivity extends AbstractBaseActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_detail);
+        super.onCreate(savedInstanceState);
         this.init();
         new BlobRequest()
                 .activity(this)
@@ -84,11 +84,5 @@ public class PostDetailActivity extends AbstractBaseActivity
         this.tvPostDescription.setText(this.post.description);
         this.tvTimeAvailable.setText(this.post.postTime.substring(5,19).replace("T", " "));
         this.tvTimeAvailableNext.setText(this.post.expireTime.substring(5,19).replace("T", " "));
-    }
-
-    public void startShoppingCartActivity(View v)
-    {
-        Intent intent = new Intent(PostDetailActivity.this, ShoppingCartActivity.class);
-        PostDetailActivity.this.startActivity(intent);
     }
 }

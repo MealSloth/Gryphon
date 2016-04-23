@@ -14,7 +14,7 @@ import java.util.ArrayList;
 /**
  * Created by michael on 3/17/16.
  */
-public abstract class AbstractProfileActivity extends AbstractBaseActivity
+public abstract class AbstractProfileActivity extends AbstractTabBarActivity
 {
     protected UserModel user;
 
@@ -44,7 +44,7 @@ public abstract class AbstractProfileActivity extends AbstractBaseActivity
                         this.user.firstName,
                         this.user.lastName
                 ));
-                this.tvGender.setText(UserGender.stringForInt(this.user.gender));
+                this.tvGender.setText(UserGender.StringForInt(this.user.gender));
                 this.tvDateOfBirth.setText(this.user.dateOfBirth.substring(0, 10));
                 break;
         }

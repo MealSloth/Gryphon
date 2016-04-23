@@ -29,17 +29,17 @@ public class UserGender
         userGenderEnum.put(UserGenderEnum.OTHER, "Other");
     }
 
-    public static String stringForInt(int index)
+    public static String StringForInt(int index)
     {
         if (index < UserGenderEnum.values().length)
-            return userGenderEnum.get(UserGender.forInt(index));
+            return userGenderEnum.get(UserGender.ForInt(index));
         else
             return null;
     }
 
-    public static UserGenderEnum forInt(int index)
+    public static UserGenderEnum ForInt(int index)
     {
-        if (index < UserGenderEnum.values().length)
+        if (index < UserGenderEnum.values().length && index >= 0)
             return UserGenderEnum.values()[index];
         else
             return null;

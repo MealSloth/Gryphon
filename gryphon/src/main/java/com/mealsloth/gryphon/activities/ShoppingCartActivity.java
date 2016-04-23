@@ -8,7 +8,7 @@ import com.mealsloth.gryphon.R;
 
 import java.util.ArrayList;
 
-public class ShoppingCartActivity extends AbstractBaseActivity
+public class ShoppingCartActivity extends AbstractTabBarActivity
 {
     private TextView tvUnitPrice;
     private TextView tvTotalPrice;
@@ -20,8 +20,8 @@ public class ShoppingCartActivity extends AbstractBaseActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
+        super.onCreate(savedInstanceState);
         this.init();
     }
 

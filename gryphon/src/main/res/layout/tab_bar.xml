@@ -2,30 +2,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:background="@color/white"
+    android:layout_height="52dp"
+    android:background="@color/grey_extra_light"
     android:weightSum="1.0"
-    tools:context=".activities.AbstractTabBarFragmentActivity">
+    android:paddingTop="2dp"
+    tools:context=".activities.AbstractTabBarActivity">
 
     <ImageView
-        android:id="@+id/tab_bar_item_1"
+        android:id="@+id/tab_bar_item_discover"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="50dp"
         android:layout_weight="0.33"
-        android:clickable="true"/>
+        android:clickable="true"
+        android:onClick="startDiscoverActivity"
+        android:padding="7dp"
+        android:background="@color/white"
+        android:src="@mipmap/ic_explore_black_24dp"/>
 
     <ImageView
-        android:id="@+id/tab_bar_item_2"
+        android:id="@+id/tab_bar_item_home"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="50dp"
         android:layout_weight="0.34"
-        android:clickable="true"/>
+        android:clickable="true"
+        android:onClick="startHomeActivity"
+        android:padding="4dp"
+        android:background="@color/white"
+        android:src="@mipmap/ic_home_black_24dp"/>
 
     <ImageView
-        android:id="@+id/tab_bar_item_3"
+        android:id="@+id/tab_bar_item_profile"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="50dp"
         android:layout_weight="0.33"
-        android:clickable="true"/>
+        android:clickable="true"
+        android:onClick="startProfileActivity"
+        android:padding="4dp"
+        android:background="@color/white"
+        android:src="@mipmap/ic_person_black_24dp"/>
 
 </LinearLayout>
