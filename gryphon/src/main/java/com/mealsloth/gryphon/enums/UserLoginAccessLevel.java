@@ -14,8 +14,8 @@ public class UserLoginAccessLevel
         ChefAdmin (1),
         ConsumerAdmin (2),
         ConsumerChef (3),
-        Consumer (4),
-        Chef (5),
+        Chef (4),
+        Consumer (5),
         Trial (6);
 
         public final int index;
@@ -33,8 +33,8 @@ public class UserLoginAccessLevel
         userLoginAccessLevelEnum.put(UserLoginAccessLevelEnum.ChefAdmin, "Chef Admin");
         userLoginAccessLevelEnum.put(UserLoginAccessLevelEnum.ConsumerAdmin, "Consumer Admin");
         userLoginAccessLevelEnum.put(UserLoginAccessLevelEnum.ConsumerChef, "Consumer Chef");
-        userLoginAccessLevelEnum.put(UserLoginAccessLevelEnum.Consumer, "Consumer");
         userLoginAccessLevelEnum.put(UserLoginAccessLevelEnum.Chef, "Chef");
+        userLoginAccessLevelEnum.put(UserLoginAccessLevelEnum.Consumer, "Consumer");
         userLoginAccessLevelEnum.put(UserLoginAccessLevelEnum.Trial, "Trial");
     }
 
